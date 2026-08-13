@@ -1,6 +1,6 @@
 function Button({ children, href, variant = "primary" }) {
   return (
-    <a href={href} className={`button button--${variant}`}>
+    <a className={`button button--${variant}`} href={href}>
       {children}
     </a>
   );
