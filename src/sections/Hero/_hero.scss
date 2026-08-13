@@ -1,0 +1,83 @@
+@use "../../assets/styles/config" as *;
+
+.hero {
+  padding: 80px 0;
+
+  &__container {
+    width: min(90%, $container-width);
+    margin: 0 auto;
+  }
+
+  &__greeting {
+    color: $primary-color;
+    font-size: 1rem;
+  }
+
+  &__name {
+    color: $text-color;
+    font-size: 2.8rem;
+    line-height: 1.1;
+    margin: 10px 0;
+  }
+
+  &__role {
+    color: $muted-color;
+    font-size: 1.2rem;
+    line-height: 1.5;
+
+    span {
+      color: $primary-color;
+      margin: 0 4px;
+    }
+  }
+
+  &__description {
+    color: $muted-color;
+    max-width: 650px;
+    line-height: 1.7;
+  }
+
+  &__actions {
+    margin-top: 30px;
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+
+    a {
+      display: inline-block;
+      padding: 12px 24px;
+      background-color: $primary-color;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .hero {
+    padding: 100px 0;
+
+    &__name {
+      font-size: 3.5rem;
+    }
+
+    &__role {
+      font-size: 1.4rem;
+    }
+  }
+}
+
+@media (min-width: 1200px) {
+  .hero {
+    padding: 140px 0;
+
+    &__name {
+      font-size: 4rem;
+    }
+
+    &__role {
+      font-size: 1.5rem;
+    }
+  }
+}
