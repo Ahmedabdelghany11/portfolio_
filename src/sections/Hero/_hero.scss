@@ -3,11 +3,6 @@
 .hero {
   padding: 80px 0;
 
-  &__container {
-    width: min(90%, $container-width);
-    margin: 0 auto;
-  }
-
   &__greeting {
     color: $primary-color;
     font-size: 1rem;

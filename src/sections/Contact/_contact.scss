@@ -1,0 +1,40 @@
+@use '../../assets/styles/config' as *;
+
+.contact {
+  padding: 100px 0;
+
+  &__content {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  &__info {
+    h3 {
+      margin: 0 0 16px;
+
+      color: $text-color;
+      font-size: 1.5rem;
+    }
+
+    p {
+      max-width: 400px;
+      margin: 0;
+
+      color: $muted-color;
+      line-height: 1.8;
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .contact {
+    padding: 70px 0;
+
+    &__content {
+      grid-template-columns: 1fr;
+      gap: 50px;
+    }
+  }
+}

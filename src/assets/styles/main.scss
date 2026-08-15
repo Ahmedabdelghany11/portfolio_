@@ -1,2 +1,29 @@
-@use "../../components/Button/button";
+@use "./reset";
+
 @use "../../sections/Hero/hero";
+
+@use "../../components/Button/button";
+
+@use "../../components/Navbar/navbar";
+
+@use "../../components/SectionTitle/section-title";
+
+@use "../../sections/About/about";
+
+@use "../../components/SkillCard/skill-card";
+
+@use "../../sections/Skills/skills";
+
+@use "../../components/ProjectCard/project-card";
+
+@use "../../sections/Projects/projects";
+
+@use "../../components/ExperienceCard/experience-card";
+
+@use "../../sections/Experience/experience";
+
+@use "../../components/ContactForm/contact-form";
+
+@use "../../sections/Contact/contact";
+
+@use "../../components/Footer/footer";

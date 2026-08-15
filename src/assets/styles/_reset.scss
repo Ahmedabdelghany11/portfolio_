@@ -1,0 +1,44 @@
+@use "./config" as *;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: $text-color;
+  background-color: $background-color;
+}
+
+.container {
+  width: min(90%, $container-width);
+  margin: 0 auto;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+a {
+  color: inherit;
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+}

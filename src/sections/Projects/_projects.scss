@@ -1,0 +1,21 @@
+@use "../../assets/styles/config" as *;
+
+.projects {
+  padding: 100px 0;
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+  }
+}
+
+@media (max-width: 767px) {
+  .projects {
+    padding: 70px 0;
+
+    &__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+}

@@ -1,0 +1,39 @@
+@use "../../assets/styles/config" as *;
+
+.skill-card {
+  padding: 30px;
+
+  border: 1px solid $border-color;
+  border-radius: 12px;
+
+  background-color: $background-color;
+
+  &__title {
+    margin: 0 0 20px;
+
+    color: $text-color;
+    font-size: 1.2rem;
+  }
+
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+  }
+
+  &__item {
+    padding: 8px 14px;
+
+    border-radius: 6px;
+
+    background-color: #f1f5f9;
+    color: $text-color;
+
+    font-size: 0.9rem;
+  }
+}

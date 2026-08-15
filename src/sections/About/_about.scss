@@ -1,0 +1,73 @@
+@use "../../assets/styles/config" as *;
+
+.about {
+  padding: 100px 0;
+
+  &__content {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  &__text {
+    max-width: 700px;
+
+    p {
+      margin: 0 0 20px;
+
+      color: $muted-color;
+      font-size: 1.05rem;
+      line-height: 1.8;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  &__info-item {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+
+    padding-bottom: 16px;
+
+    border-bottom: 1px solid $border-color;
+
+    span {
+      color: $muted-color;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    strong {
+      color: $text-color;
+      font-size: 1rem;
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .about {
+    padding: 70px 0;
+
+    &__content {
+      grid-template-columns: 1fr;
+      gap: 50px;
+    }
+
+    &__text {
+      p {
+        font-size: 1rem;
+      }
+    }
+  }
+}

@@ -1,0 +1,55 @@
+@use "../../assets/styles/config" as *;
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  &__field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    label {
+      color: $text-color;
+      font-weight: 600;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 12px 14px;
+
+      border: 1px solid $border-color;
+      border-radius: 6px;
+
+      background-color: $background-color;
+      color: $text-color;
+
+      outline: none;
+
+      &:focus {
+        border-color: $primary-color;
+      }
+    }
+
+    textarea {
+      resize: vertical;
+    }
+  }
+
+  button {
+    align-self: flex-start;
+
+    padding: 12px 22px;
+
+    border: none;
+    border-radius: 6px;
+
+    background-color: $primary-color;
+    color: $background-color;
+
+    cursor: pointer;
+    font-weight: 600;
+  }
+}

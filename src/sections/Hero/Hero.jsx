@@ -3,7 +3,7 @@ import Button from "../../components/Button/Button";
 function Hero() {
   return (
     <section className="hero">
-      <div className="hero__container">
+      <div className="container">
         <p className="hero__greeting">Hello, I'm</p>
 
         <h1 className="hero__name">Ahmed Abdelghany</h1>

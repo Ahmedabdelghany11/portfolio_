@@ -1,0 +1,85 @@
+@use "../../assets/styles/config" as *;
+
+.navbar {
+  width: min(90%, $container-width);
+  margin: 0 auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 24px 0;
+
+  &__logo {
+    margin: 0;
+    color: $text-color;
+    font-size: 1.25rem;
+  }
+
+  &__toggle {
+    display: none;
+  }
+
+  &__links {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+
+    a {
+      color: $text-color;
+      text-decoration: none;
+      font-weight: 500;
+
+      transition: color 0.2s ease;
+
+      &:hover {
+        color: $primary-color;
+      }
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .navbar {
+    position: relative;
+
+    &__toggle {
+      display: block;
+
+      background: none;
+      border: none;
+
+      font-size: 1.5rem;
+      cursor: pointer;
+
+      color: $text-color;
+    }
+
+    &__links {
+      position: absolute;
+      top: 100%;
+      left: 0;
+
+      width: 100%;
+
+      display: none;
+      flex-direction: column;
+      align-items: flex-start;
+
+      padding: 20px;
+
+      background-color: $background-color;
+
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+
+      &--open {
+        display: flex;
+      }
+    }
+  }
+}
