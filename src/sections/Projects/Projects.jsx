@@ -1,16 +1,31 @@
-import ProjectCard from "../../components/ProjectCard/ProjectCard";
 import SectionTitle from "../../components/SectionTitle/SectionTitle";
+import ProjectCard from "../../components/ProjectCard/ProjectCard";
 import projects from "../../data/projects";
 
 function Projects() {
   return (
-    <section id="projects" className="projects">
+    <section className="projects" id="projects">
       <div className="container">
-        <SectionTitle subtitle="What I've built" title="Featured Projects" />
+        {/* Section Header */}
+        <div className="projects__header">
+          <SectionTitle
+            eyebrow="Selected Work"
+            title="Projects"
+          />
 
-        <div className="projects__grid">
+          <p className="projects__intro">
+            A selection of web applications and digital products
+            I've worked on using modern frontend technologies.
+          </p>
+        </div>
+
+        {/* Projects */}
+        <div className="projects__list">
           {projects.map((project) => (
-            <ProjectCard key={project.id} {...project} />
+            <ProjectCard
+              key={project.id}
+              project={project}
+            />
           ))}
         </div>
       </div>

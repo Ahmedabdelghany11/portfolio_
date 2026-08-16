@@ -1,111 +1,371 @@
 @use "../../assets/styles/config" as *;
 
 .project-card {
-  overflow: hidden;
+  display: grid;
 
-  border: 1px solid $border-color;
-  border-radius: 12px;
+  grid-template-columns: minmax(300px, 0.95fr) minmax(0, 1.05fr);
 
-  background-color: $background-color;
+  gap: 55px;
 
-  transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease;
+  align-items: center;
 
-  &:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
-  }
+  padding: 0 0 55px;
 
-  &__image {
-    aspect-ratio: 16 / 9;
+  border-bottom: 1px solid $border-color;
+
+  // ========================================
+  // Preview
+  // ========================================
+
+  &__preview {
+    position: relative;
+
+    width: 100%;
+
+    aspect-ratio: 16 / 10;
+
     overflow: hidden;
+
+    border-radius: 12px;
+
+    background-color: $background-secondary;
 
     img {
       width: 100%;
       height: 100%;
+      aspect-ratio: inherit;
+
+      display: block;
+
       object-fit: cover;
+      object-position: center;
+
+      transition: transform 0.4s ease;
     }
   }
 
-  &__placeholder {
-    display: grid;
-    place-items: center;
-
-    width: 100%;
-    height: 100%;
-
-    background-color: #f1f5f9;
-    color: $muted-color;
+  &:hover {
+    .project-card__preview img {
+      transform: scale(1.025);
+    }
   }
 
-  &__content {
-    padding: 24px;
-  }
+  // ========================================
+  // Preview Button
+  // ========================================
 
-  &__title {
-    margin: 0 0 12px;
+  &__preview-link {
+    position: absolute;
+
+    right: 16px;
+    bottom: 16px;
+
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
 
     color: $text-color;
-    font-size: 1.3rem;
+    background-color: $background-color;
+
+    text-decoration: none;
+
+    font-size: 1.1rem;
+
+    opacity: 0;
+
+    transform: translateY(5px);
+
+    transition:
+      opacity 0.25s ease,
+      transform 0.25s ease,
+      background-color 0.25s ease;
+
+    &:hover {
+      color: #ffffff;
+
+      background-color: $primary-color;
+    }
+  }
+
+  &:hover &__preview-link {
+    opacity: 1;
+
+    transform: translateY(0);
+  }
+
+  // ========================================
+  // Content
+  // ========================================
+
+  &__content {
+    min-width: 0;
+
+    padding: 5px 10px 5px 0;
+  }
+
+  // ========================================
+  // Meta
+  // ========================================
+
+  &__meta {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin-bottom: 13px;
+  }
+
+  &__number {
+    color: $primary-color;
+
+    font-size: 0.8rem;
+
+    font-weight: 700;
+  }
+
+  &__category {
+    color: $muted-color;
+
+    font-size: 0.8rem;
+
+    font-weight: 500;
+  }
+
+  // ========================================
+  // Main
+  // ========================================
+
+  &__title {
+    margin: 0 0 14px;
+
+    color: $text-color;
+
+    font-size: clamp(2rem, 4vw, 3rem);
+
+    font-weight: 700;
+
+    line-height: 1.1;
+
+    letter-spacing: normal;
   }
 
   &__description {
-    margin: 0 0 20px;
+    max-width: 560px;
+
+    margin: 0;
 
     color: $muted-color;
-    line-height: 1.7;
+
+    font-size: 0.95rem;
+
+    line-height: 1.75;
   }
+
+  // ========================================
+  // Bottom
+  // ========================================
+
+  &__bottom {
+    display: flex;
+
+    align-items: flex-end;
+
+    justify-content: space-between;
+
+    gap: 30px;
+
+    margin-top: 28px;
+
+    padding-top: 20px;
+
+    border-top: 1px solid $border-color;
+  }
+
+  // ========================================
+  // Technologies
+  // ========================================
 
   &__technologies {
     display: flex;
+
     flex-wrap: wrap;
-    gap: 8px;
 
-    margin: 0 0 24px;
-    padding: 0;
+    gap: 7px;
 
-    list-style: none;
-
-    li {
-      padding: 6px 10px;
-
-      border-radius: 5px;
-
-      background-color: #f1f5f9;
-
-      font-size: 0.8rem;
-    }
+    max-width: 360px;
   }
 
-  &__actions {
+  &__technology {
+    padding: 5px 9px;
+
+    border: 1px solid $border-color;
+
+    border-radius: 4px;
+
+    color: $muted-color;
+
+    font-size: 0.72rem;
+
+    font-weight: 500;
+
+    white-space: nowrap;
+  }
+
+  // ========================================
+  // Links
+  // ========================================
+
+  &__links {
     display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
+
+    align-items: center;
+
+    gap: 20px;
+
+    flex-shrink: 0;
+
+    padding-right: 2px;
 
     a {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
+      color: $text-color;
 
-      min-width: 110px;
-      padding: 10px 16px;
+      font-size: 0.82rem;
 
-      border: 1px solid $primary-color;
-      border-radius: 6px;
-
-      color: $primary-color;
-      text-decoration: none;
       font-weight: 600;
 
-      transition:
-        background-color 0.2s ease,
-        color 0.2s ease;
+      text-decoration: none;
+
+      white-space: nowrap;
+
+      transition: color 0.2s ease;
 
       &:hover {
-        background-color: $primary-color;
-        color: $background-color;
+        color: $primary-color;
       }
+    }
+  }
+}
+
+// ========================================
+// Tablet
+// ========================================
+
+@media (max-width: 900px) {
+  .project-card {
+    grid-template-columns: 1fr;
+
+    gap: 28px;
+
+    padding-bottom: 45px;
+
+    &__preview {
+      aspect-ratio: 16 / 9;
+    }
+
+    &__content {
+      padding: 0;
+    }
+
+    &__description {
+      max-width: 700px;
+    }
+
+    &__bottom {
+      align-items: flex-start;
+
+      flex-direction: column;
+
+      gap: 20px;
+    }
+
+    &__technologies {
+      max-width: 100%;
+    }
+
+    &__links {
+      padding-right: 0;
+    }
+  }
+}
+
+// ========================================
+// Mobile
+// ========================================
+
+@media (max-width: 600px) {
+  .project-card {
+    gap: 22px;
+
+    padding-bottom: 35px;
+
+    &__preview {
+      aspect-ratio: 16 / 10;
+
+      border-radius: 10px;
+    }
+
+    &__preview-link {
+      right: 12px;
+      bottom: 12px;
+
+      width: 38px;
+      height: 38px;
+
+      opacity: 1;
+
+      transform: none;
+    }
+
+    &__meta {
+      gap: 10px;
+
+      margin-bottom: 10px;
+    }
+
+    &__title {
+      margin-bottom: 12px;
+
+      font-size: 2rem;
+    }
+
+    &__description {
+      font-size: 0.9rem;
+
+      line-height: 1.7;
+    }
+
+    &__bottom {
+      gap: 17px;
+
+      margin-top: 22px;
+
+      padding-top: 17px;
+    }
+
+    &__technologies {
+      gap: 6px;
+    }
+
+    &__technology {
+      padding: 5px 8px;
+
+      font-size: 0.7rem;
+    }
+
+    &__links {
+      width: 100%;
+
+      justify-content: flex-start;
+
+      gap: 20px;
     }
   }
 }

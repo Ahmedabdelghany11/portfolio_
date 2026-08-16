@@ -1,59 +1,69 @@
-function ProjectCard({
-  title,
-  description,
-  technologies,
-  image,
-  github,
-  demo,
-}) {
+import "./_project-card.scss";
+
+function ProjectCard({ project }) {
   return (
     <article className="project-card">
-      <div className="project-card__image">
-        {image ? (
-          <img src={image} alt={`${title} project preview`} />
-        ) : (
-          <div className="project-card__placeholder" aria-hidden="true">
-            Project Preview
-          </div>
+      {/* Preview */}
+      <div className="project-card__preview">
+        <img src={project.image} alt={`${project.name} project preview`} />
+
+        {project.live && (
+          <a
+            className="project-card__preview-link"
+            href={project.live}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`Open ${project.name} live demo`}
+          >
+            ↗
+          </a>
         )}
       </div>
 
+      {/* Content */}
       <div className="project-card__content">
-        <h3 className="project-card__title">{title}</h3>
+        {/* Meta */}
+        <div className="project-card__meta">
+          <span className="project-card__number">{project.number}</span>
 
-        <p className="project-card__description">{description}</p>
+          <span className="project-card__category">{project.category}</span>
+        </div>
 
-        <ul className="project-card__technologies">
-          {technologies.map((technology) => (
-            <li key={technology}>{technology}</li>
-          ))}
-        </ul>
+        {/* Main Content */}
+        <div className="project-card__main">
+          <h3 className="project-card__title">{project.name}</h3>
 
-        {(github || demo) && (
-          <div className="project-card__actions">
-            {github && (
+          <p className="project-card__description">{project.description}</p>
+        </div>
+
+        {/* Bottom */}
+        <div className="project-card__bottom">
+          <div className="project-card__technologies">
+            {project.technologies.map((technology) => (
+              <span key={technology} className="project-card__technology">
+                {technology}
+              </span>
+            ))}
+          </div>
+
+          <div className="project-card__links">
+            {project.github && (
               <a
-                href={github}
+                href={project.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label={`View ${title} source code on GitHub`}
               >
-                GitHub
+                GitHub ↗
               </a>
             )}
 
-            {demo && (
-              <a
-                href={demo}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={`View ${title} live demo`}
-              >
-                Live Demo
+            {project.live && (
+              <a href={project.live} target="_blank" rel="noopener noreferrer">
+                Live Demo ↗
               </a>
             )}
           </div>
-        )}
+        </div>
       </div>
     </article>
   );
