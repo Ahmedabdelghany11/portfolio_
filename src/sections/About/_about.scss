@@ -1,24 +1,26 @@
 @use "../../assets/styles/config" as *;
 
 .about {
-  padding: 100px 0;
+  padding: 110px 0;
 
   &__content {
     display: grid;
-    grid-template-columns: 1.5fr 1fr;
-    gap: 80px;
-    align-items: start;
+    grid-template-columns: minmax(0, 1.1fr) minmax(300px, 0.9fr);
+    gap: 100px;
+
+    max-width: 1100px;
+    margin: 70px auto 0;
   }
 
-  &__text {
-    max-width: 700px;
+  &__intro {
+    max-width: 650px;
 
     p {
-      margin: 0 0 20px;
+      margin: 0 0 28px;
 
       color: $muted-color;
-      font-size: 1.05rem;
-      line-height: 1.8;
+      font-size: 1.15rem;
+      line-height: 1.9;
 
       &:last-child {
         margin-bottom: 0;
@@ -26,31 +28,59 @@
     }
   }
 
-  &__info {
+  &__focus {
     display: flex;
     flex-direction: column;
-    gap: 20px;
   }
 
-  &__info-item {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
+  &__focus-item {
+    display: grid;
+    grid-template-columns: 45px 1fr;
+    gap: 20px;
 
-    padding-bottom: 16px;
+    padding: 24px 0;
 
     border-bottom: 1px solid $border-color;
 
-    span {
-      color: $muted-color;
-      font-size: 0.85rem;
-      text-transform: uppercase;
-      letter-spacing: 1px;
+    &:first-child {
+      padding-top: 0;
     }
 
-    strong {
-      color: $text-color;
-      font-size: 1rem;
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  &__focus-number {
+    color: $primary-color;
+    font-size: 0.9rem;
+    font-weight: 600;
+    line-height: 1.5;
+  }
+
+  &__focus-item h3 {
+    margin: 0;
+
+    color: $text-color;
+    font-size: 1.15rem;
+    font-weight: 600;
+    line-height: 1.5;
+  }
+}
+
+@media (max-width: 900px) {
+  .about {
+    padding: 90px 0;
+
+    &__content {
+      grid-template-columns: 1fr;
+      gap: 55px;
+
+      margin-top: 55px;
+    }
+
+    &__intro {
+      max-width: 750px;
     }
   }
 }
@@ -60,14 +90,26 @@
     padding: 70px 0;
 
     &__content {
-      grid-template-columns: 1fr;
-      gap: 50px;
+      gap: 45px;
+      margin-top: 40px;
     }
 
-    &__text {
+    &__intro {
       p {
         font-size: 1rem;
+        line-height: 1.8;
       }
+    }
+
+    &__focus-item {
+      grid-template-columns: 35px 1fr;
+      gap: 15px;
+
+      padding: 20px 0;
+    }
+
+    &__focus-item h3 {
+      font-size: 1rem;
     }
   }
 }

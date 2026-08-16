@@ -2,38 +2,48 @@ import { useState } from "react";
 import navLinks from "../../data/navLinks";
 
 function Navbar() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
-  const closeMenu = () => {
-    setIsMenuOpen(false);
+  const handleLinkClick = () => {
+    setIsOpen(false);
   };
 
   return (
-    <nav className="navbar">
-      <h2 className="navbar__logo">Ahmed Abdelghany</h2>
+    <header className="navbar">
+      <div className="container navbar__container">
+        <a href="#home" className="navbar__logo" onClick={handleLinkClick}>
+          Ahmed Abdelghany
+        </a>
 
-      <button
-        className="navbar__toggle"
-        type="button"
-        onClick={() => setIsMenuOpen((prev) => !prev)}
-        aria-label="Toggle navigation menu"
-        aria-expanded={isMenuOpen}
-      >
-        {isMenuOpen ? "✕" : "☰"}
-      </button>
+        <button
+          type="button"
+          className={`navbar__toggle ${isOpen ? "is-active" : ""}`}
+          onClick={() => setIsOpen((prev) => !prev)}
+          aria-label="Toggle navigation menu"
+          aria-expanded={isOpen}
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
 
-      <ul
-        className={`navbar__links ${isMenuOpen ? "navbar__links--open" : ""}`}
-      >
-        {navLinks.map((link) => (
-          <li key={link.href}>
-            <a href={link.href} onClick={closeMenu}>
+        <nav
+          className={`navbar__nav ${isOpen ? "is-open" : ""}`}
+          aria-label="Main navigation"
+        >
+          {navLinks.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              className="navbar__link"
+              onClick={handleLinkClick}
+            >
               {link.label}
             </a>
-          </li>
-        ))}
-      </ul>
-    </nav>
+          ))}
+        </nav>
+      </div>
+    </header>
   );
 }
 

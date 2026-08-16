@@ -1,36 +1,54 @@
 import SectionTitle from "../../components/SectionTitle/SectionTitle";
-import aboutInfo from "../../data/aboutInfo";
+
+const focusAreas = [
+  {
+    number: "01",
+    title: "Reusable Components",
+  },
+  {
+    number: "02",
+    title: "API Integration",
+  },
+  {
+    number: "03",
+    title: "Responsive Interfaces",
+  },
+  {
+    number: "04",
+    title: "ٌMaintainable & Scalable Web Applications",
+  },
+];
 
 function About() {
   return (
     <section id="about" className="about">
       <div className="container">
-        <SectionTitle subtitle="Get to know me" title="About Me" />
+        <SectionTitle
+          eyebrow="About Me"
+          title="Building interfaces with purpose"
+        />
 
         <div className="about__content">
-          <div className="about__text">
+          <div className="about__intro">
             <p>
-              I'm a Frontend Developer focused on building responsive and
-              user-friendly web applications using modern JavaScript
-              technologies.
+              I'm a Frontend Developer focused on building responsive, scalable
+              web applications with React.js and modern frontend technologies.
             </p>
 
             <p>
-              I mainly work with React.js and its ecosystem, with hands-on
-              experience using TypeScript, Redux Toolkit, React Query, and Vite.
-            </p>
-
-            <p>
-              I enjoy turning ideas and designs into clean, maintainable, and
-              responsive user interfaces.
+              My experience includes working with TypeScript, Redux Toolkit,
+              React Query, REST APIs, and reusable component architectures. I
+              care about writing maintainable code, building clear user
+              interfaces, and turning designs into reliable web experiences.
             </p>
           </div>
 
-          <div className="about__info">
-            {aboutInfo.map((item) => (
-              <div className="about__info-item" key={item.label}>
-                <span>{item.label}</span>
-                <strong>{item.value}</strong>
+          <div className="about__focus">
+            {focusAreas.map((area) => (
+              <div className="about__focus-item" key={area.number}>
+                <span className="about__focus-number">{area.number}</span>
+
+                <h3>{area.title}</h3>
               </div>
             ))}
           </div>
