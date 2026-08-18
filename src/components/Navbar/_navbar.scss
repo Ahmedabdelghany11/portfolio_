@@ -19,22 +19,141 @@
   }
 
   &__logo {
+    display: inline-flex;
+    align-items: center;
+
     color: $text-color;
     text-decoration: none;
-    font-size: 1.1rem;
-    font-weight: 700;
-    transition: 0.2s ease;
 
     &:hover,
-    &:focus {
-      color: $primary-color;
+    &:focus,
+    &:active {
+      color: $text-color;
       text-decoration: none;
+    }
+  }
+
+  &__logo-mark {
+    display: inline-flex;
+    align-items: center;
+
+    gap: 8px;
+
+    color: $text-color;
+
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+
+    white-space: nowrap;
+  }
+
+  &__logo-word {
+    display: inline-flex;
+    align-items: center;
+
+    width: 16px;
+
+    overflow: hidden;
+
+    white-space: nowrap;
+
+    transition: width 0.55s ease;
+  }
+
+  &__logo-short {
+    display: inline-flex;
+    align-items: center;
+
+    flex-shrink: 0;
+
+    white-space: nowrap;
+  }
+
+  &__logo-dot {
+    display: inline-block;
+
+    width: auto;
+
+    opacity: 1;
+
+    overflow: hidden;
+
+    transition:
+      opacity 0.1s ease,
+      width 0.1s ease;
+  }
+
+  &__logo-full {
+    display: inline-block;
+
+    flex-shrink: 0;
+
+    width: auto;
+
+    max-width: 0;
+
+    overflow: hidden;
+
+    white-space: nowrap;
+
+    clip-path: inset(0 100% 0 0);
+
+    /*
+      Faster typing / deleting animation
+    */
+    transition:
+      max-width 0.5s steps(9, end),
+      clip-path 0.5s steps(9, end);
+  }
+
+  &__logo:hover,
+  &__logo:focus-visible {
+    .navbar__logo-word--first {
+      width: 56px;
+
+      .navbar__logo-dot {
+        width: 0;
+
+        opacity: 0;
+      }
+
+      .navbar__logo-full {
+        max-width: 100px;
+
+        clip-path: inset(0 0 0 0);
+
+        transition:
+          max-width 0.45s steps(4, end),
+          clip-path 0.45s steps(4, end);
+      }
+    }
+
+    .navbar__logo-word--last {
+      width: 100px;
+
+      .navbar__logo-dot {
+        width: 0;
+
+        opacity: 0;
+      }
+
+      .navbar__logo-full {
+        max-width: 150px;
+
+        clip-path: inset(0 0 0 0);
+
+        transition:
+          max-width 0.7s steps(9, end),
+          clip-path 0.7s steps(9, end);
+      }
     }
   }
 
   &__nav {
     display: flex;
     align-items: center;
+
     gap: 32px;
   }
 
@@ -43,13 +162,14 @@
 
     color: $text-color;
     text-decoration: none;
+
     font-size: 0.95rem;
     font-weight: 500;
 
     transition: color 0.2s ease;
 
     &:hover,
-    &:focus {
+    &:focus-visible {
       color: $primary-color;
       text-decoration: none;
     }
@@ -70,7 +190,7 @@
     }
 
     &:hover::after,
-    &:focus::after {
+    &:focus-visible::after {
       width: 100%;
     }
   }
@@ -101,8 +221,36 @@
       background-color: $text-color;
 
       transition:
-        transform 0.2s ease,
+        transform 0.25s ease,
         opacity 0.2s ease;
+    }
+
+    &.is-active {
+      span {
+        &:nth-child(1) {
+          transform: translateY(7px) rotate(45deg);
+        }
+
+        &:nth-child(2) {
+          opacity: 0;
+        }
+
+        &:nth-child(3) {
+          transform: translateY(-7px) rotate(-45deg);
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 900px) {
+  .navbar {
+    &__nav {
+      gap: 24px;
+    }
+
+    &__link {
+      font-size: 0.9rem;
     }
   }
 }
@@ -111,6 +259,24 @@
   .navbar {
     &__container {
       position: relative;
+    }
+
+    &__logo-mark {
+      gap: 8px;
+    }
+
+    &__logo-word {
+      width: 16px;
+    }
+
+    &__logo-full {
+      display: none;
+    }
+
+    &__logo-dot {
+      width: auto;
+
+      opacity: 1;
     }
 
     &__toggle {
@@ -125,13 +291,15 @@
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      gap: 0;
 
       width: 100%;
 
-      padding: 20px;
+      gap: 0;
+
+      padding: 15px 20px 20px;
 
       background-color: $background-color;
+
       border-bottom: 1px solid $border-color;
 
       opacity: 0;
@@ -152,11 +320,25 @@
 
     &__link {
       width: 100%;
+
       padding: 14px 0;
 
       &::after {
         display: none;
       }
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .navbar {
+    &__logo-word,
+    &__logo-dot,
+    &__logo-full,
+    &__link,
+    &__toggle span,
+    &__nav {
+      transition: none;
     }
   }
 }

@@ -11,8 +11,31 @@ function Navbar() {
   return (
     <header className="navbar">
       <div className="container navbar__container">
-        <a href="#home" className="navbar__logo" onClick={handleLinkClick}>
-          Ahmed Abdelghany
+        <a
+          href="#home"
+          className="navbar__logo"
+          onClick={handleLinkClick}
+          aria-label="Ahmed Abdelghany - Home"
+        >
+          <span className="navbar__logo-mark">
+            {/* First name */}
+            <span className="navbar__logo-word navbar__logo-word--first">
+              <span className="navbar__logo-short">
+                A<span className="navbar__logo-dot">.</span>
+              </span>
+
+              <span className="navbar__logo-full">hmed</span>
+            </span>
+
+            {/* Last name */}
+            <span className="navbar__logo-word navbar__logo-word--last">
+              <span className="navbar__logo-short">
+                A<span className="navbar__logo-dot">.</span>
+              </span>
+
+              <span className="navbar__logo-full">bdelghany</span>
+            </span>
+          </span>
         </a>
 
         <button
