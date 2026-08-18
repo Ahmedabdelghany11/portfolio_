@@ -1,40 +1,241 @@
-@use '../../assets/styles/config' as *;
+@use "../../assets/styles/config" as *;
 
 .contact {
-  padding: 100px 0;
+  padding: 120px 0;
 
-  &__content {
-    display: grid;
-    grid-template-columns: 1fr 1.5fr;
-    gap: 80px;
-    align-items: start;
+  // ==============================
+  // Wrapper
+  // ==============================
+
+  &__wrapper {
+    padding: 70px 0;
+
+    border-top: 1px solid $border-color;
+    border-bottom: 1px solid $border-color;
   }
 
-  &__info {
-    h3 {
-      margin: 0 0 16px;
+  // ==============================
+  // Header
+  // ==============================
 
-      color: $text-color;
-      font-size: 1.5rem;
+  &__header {
+    max-width: 850px;
+  }
+
+  &__eyebrow {
+    display: block;
+
+    margin-bottom: 18px;
+
+    color: $primary-color;
+
+    font-size: 0.8rem;
+    font-weight: 700;
+
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  &__title {
+    max-width: 800px;
+
+    margin: 0;
+
+    color: $text-color;
+
+    font-size: clamp(3rem, 7vw, 5.8rem);
+    font-weight: 700;
+
+    line-height: 0.98;
+    letter-spacing: -0.03em;
+
+    span {
+      color: $primary-color;
     }
+  }
 
-    p {
-      max-width: 400px;
-      margin: 0;
+  // ==============================
+  // Description
+  // ==============================
+
+  &__description {
+    max-width: 560px;
+
+    margin: 28px 0 0;
+
+    color: $muted-color;
+
+    font-size: 1rem;
+    line-height: 1.75;
+  }
+
+  // ==============================
+  // Actions
+  // ==============================
+
+  &__actions {
+    margin-top: 55px;
+  }
+
+  // ==============================
+  // Email
+  // ==============================
+
+  &__email {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 25px;
+
+    max-width: 720px;
+
+    padding-bottom: 15px;
+
+    border-bottom: 1px solid $border-color;
+
+    color: $text-color;
+
+    font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+    font-weight: 500;
+
+    text-decoration: none;
+
+    transition:
+      color 0.2s ease,
+      border-color 0.2s ease;
+
+    &:hover {
+      color: $primary-color;
+
+      border-color: $primary-color;
+    }
+  }
+
+  &__arrow {
+    flex-shrink: 0;
+
+    font-size: 1.3rem;
+  }
+
+  // ==============================
+  // Socials
+  // ==============================
+
+  &__socials {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    margin-top: 25px;
+
+    a {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+
+      padding: 9px 13px;
+
+      border: 1px solid $border-color;
+      border-radius: 6px;
 
       color: $muted-color;
-      line-height: 1.8;
+
+      font-size: 0.8rem;
+      font-weight: 600;
+
+      text-decoration: none;
+
+      transition:
+        color 0.2s ease,
+        border-color 0.2s ease,
+        background-color 0.2s ease,
+        transform 0.2s ease;
+
+      i {
+        font-size: 0.95rem;
+      }
+
+      &:hover {
+        color: $primary-color;
+
+        border-color: $primary-color;
+
+        transform: translateY(-2px);
+      }
     }
   }
 }
 
-@media (max-width: 767px) {
+// ==============================
+// Tablet
+// ==============================
+
+@media (max-width: 900px) {
+  .contact {
+    padding: 90px 0;
+
+    &__wrapper {
+      padding: 55px 0;
+    }
+  }
+}
+
+// ==============================
+// Mobile
+// ==============================
+
+@media (max-width: 600px) {
   .contact {
     padding: 70px 0;
 
-    &__content {
-      grid-template-columns: 1fr;
-      gap: 50px;
+    &__wrapper {
+      padding: 45px 0;
+    }
+
+    &__eyebrow {
+      margin-bottom: 14px;
+
+      font-size: 0.75rem;
+    }
+
+    &__title {
+      font-size: 3rem;
+      line-height: 1;
+    }
+
+    &__description {
+      margin-top: 20px;
+
+      font-size: 0.9rem;
+      line-height: 1.7;
+    }
+
+    &__actions {
+      margin-top: 40px;
+    }
+
+    &__email {
+      gap: 15px;
+
+      font-size: 0.95rem;
+
+      word-break: break-word;
+    }
+
+    &__socials {
+      flex-wrap: wrap;
+
+      gap: 10px;
+
+      margin-top: 20px;
+
+      a {
+        padding: 8px 11px;
+
+        font-size: 0.75rem;
+      }
     }
   }
 }
