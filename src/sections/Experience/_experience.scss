@@ -1,21 +1,250 @@
 @use "../../assets/styles/config" as *;
 
 .experience {
-  padding: 100px 0;
+  padding: 110px 0;
+
+  // ==============================
+  // Header
+  // ==============================
+
+  &__header {
+    max-width: 720px;
+    margin-bottom: 60px;
+  }
+
+  &__eyebrow {
+    display: block;
+
+    margin-bottom: 14px;
+
+    color: $primary-color;
+
+    font-size: 0.8rem;
+    font-weight: 700;
+
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  &__title {
+    margin: 0 0 18px;
+
+    color: $text-color;
+
+    font-size: clamp(2.3rem, 5vw, 3.8rem);
+    font-weight: 700;
+    line-height: 1.1;
+
+    letter-spacing: normal;
+  }
+
+  &__intro {
+    max-width: 600px;
+
+    margin: 0;
+
+    color: $muted-color;
+
+    font-size: 1rem;
+    line-height: 1.75;
+  }
+
+  // ==============================
+  // List
+  // ==============================
 
   &__list {
+    border-top: 1px solid $border-color;
+  }
+
+  // ==============================
+  // Experience Item
+  // ==============================
+
+  &__item {
+    display: grid;
+
+    grid-template-columns: 45px 190px minmax(0, 1fr);
+
+    gap: 30px;
+
+    padding: 35px 0;
+
+    border-bottom: 1px solid $border-color;
+  }
+
+  // ==============================
+  // Number
+  // ==============================
+
+  &__number {
+    padding-top: 4px;
+
+    color: $primary-color;
+
+    font-size: 0.8rem;
+    font-weight: 700;
+  }
+
+  // ==============================
+  // Period
+  // ==============================
+
+  &__period {
+    padding-top: 2px;
+
+    color: $muted-color;
+
+    font-size: 0.85rem;
+    line-height: 1.5;
+  }
+
+  // ==============================
+  // Content
+  // ==============================
+
+  &__content {
+    max-width: 700px;
+  }
+
+  &__company {
+    margin: 0 0 5px;
+
+    color: $text-color;
+
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+
+  &__role {
+    margin: 0 0 17px;
+
+    color: $primary-color;
+
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+
+  &__description {
+    max-width: 650px;
+
+    margin: 0 0 20px;
+
+    color: $muted-color;
+
+    font-size: 0.95rem;
+    line-height: 1.75;
+  }
+
+  // ==============================
+  // Technologies
+  // ==============================
+
+  &__technologies {
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
+
+    gap: 7px;
+  }
+
+  &__technology {
+    padding: 5px 9px;
+
+    border: 1px solid $border-color;
+    border-radius: 4px;
+
+    color: $muted-color;
+
+    font-size: 0.72rem;
+    font-weight: 500;
+
+    white-space: nowrap;
   }
 }
 
-@media (max-width: 767px) {
+// ==============================
+// Tablet
+// ==============================
+
+@media (max-width: 900px) {
+  .experience {
+    padding: 90px 0;
+
+    &__header {
+      margin-bottom: 50px;
+    }
+
+    &__item {
+      grid-template-columns: 35px 150px minmax(0, 1fr);
+
+      gap: 20px;
+    }
+  }
+}
+
+// ==============================
+// Mobile
+// ==============================
+
+@media (max-width: 600px) {
   .experience {
     padding: 70px 0;
-  }
 
-  .experience-card {
-    grid-template-columns: 1fr;
-    gap: 16px;
+    &__header {
+      margin-bottom: 40px;
+    }
+
+    &__title {
+      font-size: 2.2rem;
+    }
+
+    &__intro {
+      font-size: 0.95rem;
+    }
+
+    &__item {
+      grid-template-columns: 35px 1fr;
+
+      gap: 10px;
+
+      padding: 25px 0;
+    }
+
+    &__number {
+      grid-row: 1;
+    }
+
+    &__period {
+      grid-column: 2;
+
+      padding-top: 1px;
+
+      font-size: 0.8rem;
+    }
+
+    &__content {
+      grid-column: 2;
+    }
+
+    &__company {
+      font-size: 1.3rem;
+    }
+
+    &__role {
+      margin-bottom: 14px;
+
+      font-size: 0.85rem;
+    }
+
+    &__description {
+      font-size: 0.9rem;
+      line-height: 1.7;
+    }
+
+    &__technology {
+      padding: 5px 8px;
+
+      font-size: 0.7rem;
+    }
   }
 }
