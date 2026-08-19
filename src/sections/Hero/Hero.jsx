@@ -16,42 +16,32 @@ function Hero() {
               Frontend Engineer
             </div>
 
-            <p className="hero__eyebrow">
-              Hello, I'm
-            </p>
+            <p className="hero__eyebrow">Hello, I'm</p>
 
             <h1 className="hero__title">
-              Ahmed
+              <span>Ahmed</span>
               <span>Abdelghany</span>
             </h1>
 
-            <h2 className="hero__role">
-              Building modern web experiences
-            </h2>
+            <h2 className="hero__role">React Frontend Engineer</h2>
 
             <p className="hero__description">
-              I build scalable, responsive, and
-              maintainable web applications using
-              modern frontend technologies, with a
-              strong focus on clean architecture,
-              performance, and user experience.
+              I build scalable, responsive web applications with React.js and
+              modern frontend technologies, with a strong focus on
+              maintainability, performance, and user experience.
             </p>
 
             <div className="hero__technologies">
               <span>React.js</span>
               <span>TypeScript</span>
-              <span>JavaScript</span>
+              <span>Redux Toolkit</span>
+              <span>React Query</span>
             </div>
 
             <div className="hero__actions">
-              <Button href="#projects">
-                View My Work
-              </Button>
+              <Button href="#projects">View My Work</Button>
 
-              <Button
-                href="#contact"
-                variant="secondary"
-              >
+              <Button href="#contact" variant="secondary">
                 Let's Connect
               </Button>
             </div>
