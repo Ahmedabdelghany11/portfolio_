@@ -6,39 +6,42 @@ function Hero() {
     <section className="hero" id="home">
       <HeroScene />
 
+      <div className="hero__glow" />
+
       <div className="container">
         <div className="hero__content">
           <div className="hero__text">
+            <div className="hero__badge">
+              <span className="hero__badge-dot" />
+              Frontend Engineer
+            </div>
+
             <p className="hero__eyebrow">
               Hello, I'm
             </p>
 
             <h1 className="hero__title">
-              Ahmed Abdelghany
+              Ahmed
+              <span>Abdelghany</span>
             </h1>
 
             <h2 className="hero__role">
-              Frontend Developer
+              Building modern web experiences
             </h2>
 
-            <div className="hero__technologies">
-              <span className="technology">
-                React.js
-              </span>
-
-              <span className="separator">|</span>
-
-              <span className="technology">
-                TypeScript
-              </span>
-            </div>
-
             <p className="hero__description">
-              I build scalable and responsive web
-              applications with modern frontend
-              technologies and a strong focus on
-              clean, maintainable user interfaces.
+              I build scalable, responsive, and
+              maintainable web applications using
+              modern frontend technologies, with a
+              strong focus on clean architecture,
+              performance, and user experience.
             </p>
+
+            <div className="hero__technologies">
+              <span>React.js</span>
+              <span>TypeScript</span>
+              <span>JavaScript</span>
+            </div>
 
             <div className="hero__actions">
               <Button href="#projects">
@@ -49,7 +52,7 @@ function Hero() {
                 href="#contact"
                 variant="secondary"
               >
-                Contact Me
+                Let's Connect
               </Button>
             </div>
           </div>
