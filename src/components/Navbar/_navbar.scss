@@ -10,6 +10,10 @@
   background-color: $background-color;
   border-bottom: 1px solid $border-color;
 
+  // ========================================
+  // Container
+  // ========================================
+
   &__container {
     display: flex;
     align-items: center;
@@ -17,6 +21,10 @@
 
     min-height: 72px;
   }
+
+  // ========================================
+  // Logo
+  // ========================================
 
   &__logo {
     display: inline-flex;
@@ -58,7 +66,7 @@
 
     white-space: nowrap;
 
-    transition: width 0.55s ease;
+    transition: width 0.45s ease;
   }
 
   &__logo-short {
@@ -80,8 +88,8 @@
     overflow: hidden;
 
     transition:
-      opacity 0.1s ease,
-      width 0.1s ease;
+      opacity 0.15s ease,
+      width 0.15s ease;
   }
 
   &__logo-full {
@@ -89,66 +97,51 @@
 
     flex-shrink: 0;
 
-    width: auto;
-
-    max-width: 0;
+    width: 0;
 
     overflow: hidden;
 
     white-space: nowrap;
-
-    clip-path: inset(0 100% 0 0);
-
-    /*
-      Faster typing / deleting animation
-    */
-    transition:
-      max-width 0.5s steps(9, end),
-      clip-path 0.5s steps(9, end);
   }
+
+  // ========================================
+  // Logo Hover Animation
+  // ========================================
 
   &__logo:hover,
   &__logo:focus-visible {
     .navbar__logo-word--first {
-      width: 56px;
+      width: 60px;
 
       .navbar__logo-dot {
         width: 0;
-
         opacity: 0;
       }
 
       .navbar__logo-full {
-        max-width: 100px;
-
-        clip-path: inset(0 0 0 0);
-
-        transition:
-          max-width 0.45s steps(4, end),
-          clip-path 0.45s steps(4, end);
+        width: 60px;
+        transition: width 0.45s steps(4, end);
       }
     }
 
     .navbar__logo-word--last {
-      width: 100px;
+      width: 110px;
 
       .navbar__logo-dot {
         width: 0;
-
         opacity: 0;
       }
 
       .navbar__logo-full {
-        max-width: 150px;
-
-        clip-path: inset(0 0 0 0);
-
-        transition:
-          max-width 0.7s steps(9, end),
-          clip-path 0.7s steps(9, end);
+        width: 110px;
+        transition: width 0.65s steps(9, end);
       }
     }
   }
+
+  // ========================================
+  // Navigation
+  // ========================================
 
   &__nav {
     display: flex;
@@ -195,11 +188,16 @@
     }
   }
 
+  // ========================================
+  // Mobile Toggle
+  // ========================================
+
   &__toggle {
     display: none;
 
     flex-direction: column;
     justify-content: center;
+
     gap: 5px;
 
     width: 42px;
@@ -243,6 +241,10 @@
   }
 }
 
+// ========================================
+// Tablet
+// ========================================
+
 @media (max-width: 900px) {
   .navbar {
     &__nav {
@@ -255,12 +257,17 @@
   }
 }
 
+// ========================================
+// Mobile
+// ========================================
+
 @media (max-width: 767px) {
   .navbar {
     &__container {
       position: relative;
     }
 
+    // Keep A. A. on mobile
     &__logo-mark {
       gap: 8px;
     }
@@ -275,7 +282,6 @@
 
     &__logo-dot {
       width: auto;
-
       opacity: 1;
     }
 
@@ -304,6 +310,7 @@
 
       opacity: 0;
       visibility: hidden;
+
       transform: translateY(-10px);
 
       transition:
@@ -314,6 +321,7 @@
       &.is-open {
         opacity: 1;
         visibility: visible;
+
         transform: translateY(0);
       }
     }
@@ -329,6 +337,10 @@
     }
   }
 }
+
+// ========================================
+// Reduced Motion
+// ========================================
 
 @media (prefers-reduced-motion: reduce) {
   .navbar {

@@ -18,7 +18,6 @@ function Navbar() {
           aria-label="Ahmed Abdelghany - Home"
         >
           <span className="navbar__logo-mark">
-            {/* First name */}
             <span className="navbar__logo-word navbar__logo-word--first">
               <span className="navbar__logo-short">
                 A<span className="navbar__logo-dot">.</span>
@@ -27,7 +26,6 @@ function Navbar() {
               <span className="navbar__logo-full">hmed</span>
             </span>
 
-            {/* Last name */}
             <span className="navbar__logo-word navbar__logo-word--last">
               <span className="navbar__logo-short">
                 A<span className="navbar__logo-dot">.</span>
