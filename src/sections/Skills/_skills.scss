@@ -1,29 +1,41 @@
 @use "../../assets/styles/config" as *;
 
 .skills {
-  padding: 110px 0;
+  position: relative;
 
-  // ==============================
+  padding: 140px 0;
+
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at 85% 30%,
+      rgba(124, 58, 237, 0.055),
+      transparent 25%
+    ),
+    $background-color;
+
+  // ========================================
   // Header
-  // ==============================
+  // ========================================
 
   &__header {
-    max-width: 720px;
+    max-width: 760px;
 
-    margin-bottom: 60px;
+    margin-bottom: 75px;
   }
 
   &__eyebrow {
     display: block;
 
-    margin-bottom: 14px;
+    margin-bottom: 15px;
 
-    color: $primary-color;
+    color: $primary-light;
 
-    font-size: 0.8rem;
+    font-size: 0.7rem;
     font-weight: 700;
 
-    letter-spacing: 0.04em;
+    letter-spacing: 0.16em;
     text-transform: uppercase;
   }
 
@@ -32,11 +44,13 @@
 
     color: $text-color;
 
-    font-size: clamp(2.3rem, 5vw, 3.8rem);
-    font-weight: 700;
+    font-size: clamp(2.8rem, 5vw, 4.8rem);
 
-    line-height: 1.1;
-    letter-spacing: normal;
+    font-weight: 750;
+
+    line-height: 1;
+
+    letter-spacing: -0.04em;
   }
 
   &__intro {
@@ -46,13 +60,14 @@
 
     color: $muted-color;
 
-    font-size: 1rem;
-    line-height: 1.75;
+    font-size: 0.95rem;
+
+    line-height: 1.8;
   }
 
-  // ==============================
+  // ========================================
   // Groups
-  // ==============================
+  // ========================================
 
   &__list {
     border-top: 1px solid $border-color;
@@ -61,24 +76,33 @@
   &__group {
     display: grid;
 
-    grid-template-columns: 60px 180px 1fr;
+    grid-template-columns: 220px minmax(0, 1fr);
 
-    gap: 30px;
+    gap: 55px;
 
-    align-items: start;
-
-    padding: 28px 0;
+    padding: 32px 0;
 
     border-bottom: 1px solid $border-color;
   }
 
+  &__group-meta {
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 18px;
+  }
+
   &__number {
-    padding-top: 3px;
+    padding-top: 2px;
 
-    color: $primary-color;
+    color: $primary-light;
 
-    font-size: 0.8rem;
+    font-size: 0.68rem;
+
     font-weight: 700;
+
+    letter-spacing: 0.08em;
   }
 
   &__group-title {
@@ -87,113 +111,146 @@
     color: $text-color;
 
     font-size: 1rem;
+
     font-weight: 600;
+
+    line-height: 1.4;
   }
 
-  // ==============================
-  // Skills
-  // ==============================
+  // ========================================
+  // Items
+  // ========================================
 
   &__items {
     display: flex;
 
+    align-items: center;
+
     flex-wrap: wrap;
 
-    gap: 8px;
+    gap: 9px;
   }
 
   &__item {
-    padding: 7px 12px;
+    display: inline-flex;
 
-    border: 1px solid $border-color;
-    border-radius: 5px;
+    align-items: center;
 
-    color: $muted-color;
+    gap: 8px;
 
-    font-size: 0.8rem;
+    padding: 8px 11px;
+
+    border: 1px solid rgba(148, 163, 184, 0.13);
+
+    border-radius: 6px;
+
+    background: rgba(15, 23, 42, 0.36);
+
+    color: #cbd5e1;
+
+    font-size: 0.75rem;
+
     font-weight: 500;
 
     transition:
       color 0.2s ease,
       border-color 0.2s ease,
-      background-color 0.2s ease;
+      background-color 0.2s ease,
+      transform 0.2s ease;
 
     &:hover {
-      color: $primary-color;
+      color: #f8fafc;
 
-      border-color: $primary-color;
+      border-color: rgba(139, 92, 246, 0.38);
 
-      background-color: rgba(124, 58, 237, 0.04);
+      background: rgba(124, 58, 237, 0.07);
+
+      transform: translateY(-2px);
+    }
+  }
+
+  &__icon {
+    width: 16px;
+    height: 16px;
+
+    flex-shrink: 0;
+
+    color: $primary-light;
+  }
+}
+
+// ========================================
+// Tablet
+// ========================================
+
+@media (max-width: 1000px) {
+  .skills {
+    padding: 110px 0;
+
+    &__header {
+      margin-bottom: 60px;
+    }
+
+    &__group {
+      grid-template-columns: 170px minmax(0, 1fr);
+
+      gap: 35px;
     }
   }
 }
 
-// ==============================
-// Tablet
-// ==============================
+// ========================================
+// Mobile
+// ========================================
 
-@media (max-width: 900px) {
+@media (max-width: 767px) {
   .skills {
     padding: 90px 0;
 
     &__header {
-      margin-bottom: 50px;
+      margin-bottom: 45px;
     }
 
-    &__group {
-      grid-template-columns: 45px 150px 1fr;
+    &__eyebrow {
+      margin-bottom: 12px;
 
-      gap: 20px;
-    }
-  }
-}
-
-// ==============================
-// Mobile
-// ==============================
-
-@media (max-width: 600px) {
-  .skills {
-    padding: 70px 0;
-
-    &__header {
-      margin-bottom: 40px;
+      font-size: 0.64rem;
     }
 
     &__title {
-      font-size: 2.2rem;
+      font-size: 2.7rem;
     }
 
     &__intro {
-      font-size: 0.95rem;
+      font-size: 0.9rem;
+      line-height: 1.75;
     }
 
     &__group {
-      grid-template-columns: 35px 1fr;
+      grid-template-columns: 1fr;
 
-      gap: 10px;
+      gap: 18px;
 
-      padding: 22px 0;
+      padding: 25px 0;
     }
 
-    &__number {
-      grid-row: 1;
-    }
-
-    &__group-title {
-      padding-top: 1px;
+    &__group-meta {
+      gap: 12px;
     }
 
     &__items {
-      grid-column: 2;
-
       gap: 7px;
     }
 
     &__item {
-      padding: 6px 9px;
+      padding: 7px 9px;
 
-      font-size: 0.75rem;
+      font-size: 0.7rem;
+    }
+
+    &__icon {
+      width: 15px;
+      height: 15px;
     }
   }
 }
