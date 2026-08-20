@@ -47,8 +47,8 @@ const skillGroups = [
     number: "03",
     title: "Styling & UI",
     skills: [
-      { name: "SASS", icon: SiSass },
       { name: "Tailwind CSS", icon: SiTailwindcss },
+      { name: "SASS", icon: SiSass },
       { name: "Styled Components", icon: TbComponents },
       { name: "Responsive Design", icon: TbGauge },
     ],
