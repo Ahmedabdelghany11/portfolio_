@@ -24,18 +24,28 @@ function About() {
   return (
     <section className="about" id="about">
       <div className="container">
+        {/* ========================================
+            Header
+        ======================================== */}
+
         <div className="about__header">
-          <span className="about__eyebrow">
-            About Me
-          </span>
+          <span className="about__eyebrow">About Me</span>
 
           <h2 className="about__title">
-            Building interfaces with
-            <span> purpose.</span>
+            Turning ideas into
+            <span> scalable interfaces.</span>
           </h2>
         </div>
 
+        {/* ========================================
+            Main Content
+        ======================================== */}
+
         <div className="about__content">
+          {/* ========================================
+              Visual
+          ======================================== */}
+
           <div className="about__visual">
             <div className="about__image-wrapper">
               <img
@@ -47,46 +57,63 @@ function About() {
 
             <div className="about__image-glow" />
 
-            <span className="about__visual-label">
-              FRONTEND / REACT
-            </span>
+            <div className="about__identity">
+              <span className="about__identity-name">Ahmed Abdelghany</span>
+
+              <span className="about__identity-role">Frontend Engineer</span>
+            </div>
           </div>
 
+          {/* ========================================
+              Information
+          ======================================== */}
+
           <div className="about__info">
+            {/* ========================================
+                Story
+            ======================================== */}
+
             <div className="about__story">
               <p className="about__lead">
-                I'm a Frontend Developer focused on building
-                scalable, responsive, and maintainable web
-                applications.
+                I'm a Frontend Developer focused on building scalable,
+                responsive, and maintainable web applications.
               </p>
 
               <p>
-                I work mainly with React.js and modern frontend
-                technologies, with hands-on experience building
-                production-level web applications and reusable
-                user interfaces.
+                I work mainly with React.js and modern frontend technologies,
+                with hands-on experience building production-level web
+                applications and reusable user interfaces.
               </p>
 
               <p>
-                My work combines frontend development, API
-                integration, state management, and responsive
-                design to turn requirements and ideas into
-                reliable web experiences.
+                My work combines frontend development, API integration, state
+                management, and responsive design to turn requirements and ideas
+                into reliable web experiences.
               </p>
             </div>
 
+            {/* ========================================
+                Highlights
+            ======================================== */}
+
             <div className="about__highlights">
               {highlights.map((highlight) => (
-                <div
-                  className="about__highlight"
-                  key={highlight.number}
-                >
+                <div className="about__highlight" key={highlight.number}>
                   <span className="about__highlight-number">
                     {highlight.number}
                   </span>
 
                   <div className="about__highlight-content">
-                    <h3>{highlight.title}</h3>
+                    <div className="about__highlight-heading">
+                      <h3>{highlight.title}</h3>
+
+                      <span
+                        className="about__highlight-arrow"
+                        aria-hidden="true"
+                      >
+                        →
+                      </span>
+                    </div>
 
                     <p>{highlight.text}</p>
                   </div>
@@ -95,6 +122,10 @@ function About() {
             </div>
           </div>
         </div>
+
+        {/* ========================================
+            Facts
+        ======================================== */}
 
         <div className="about__facts">
           <span>Computer Science</span>

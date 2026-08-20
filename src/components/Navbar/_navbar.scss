@@ -7,8 +7,37 @@
 
   width: 100%;
 
-  background-color: $background-color;
-  border-bottom: 1px solid $border-color;
+  background: rgba(7, 11, 24, 0.82);
+
+  border-bottom: 1px solid rgba(148, 163, 184, 0.06);
+
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  isolation: isolate;
+
+  transition:
+    background-color 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    backdrop-filter 0.25s ease;
+
+  // ========================================
+  // Scrolled State
+  // ========================================
+
+  &.is-scrolled {
+    background: rgba(7, 11, 24, 0.96);
+
+    border-bottom-color: rgba(148, 163, 184, 0.1);
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    box-shadow:
+      0 8px 30px rgba(0, 0, 0, 0.22),
+      0 1px 0 rgba(124, 58, 237, 0.04);
+  }
 
   // ========================================
   // Container
@@ -120,6 +149,7 @@
 
       .navbar__logo-full {
         width: 60px;
+
         transition: width 0.45s steps(4, end);
       }
     }
@@ -134,6 +164,7 @@
 
       .navbar__logo-full {
         width: 110px;
+
         transition: width 0.65s steps(9, end);
       }
     }
@@ -162,7 +193,8 @@
     transition: color 0.2s ease;
 
     &:hover,
-    &:focus-visible {
+    &:focus-visible,
+    &.is-active {
       color: $primary-color;
       text-decoration: none;
     }
@@ -171,6 +203,7 @@
       content: "";
 
       position: absolute;
+
       left: 0;
       bottom: -6px;
 
@@ -183,8 +216,73 @@
     }
 
     &:hover::after,
-    &:focus-visible::after {
+    &:focus-visible::after,
+    &.is-active::after {
       width: 100%;
+    }
+  }
+
+  // ========================================
+  // Let's Talk CTA
+  // ========================================
+
+  &__cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 7px;
+
+    margin-left: 4px;
+
+    padding: 11px 18px;
+
+    border: 1px solid rgba(139, 92, 246, 0.2);
+
+    border-radius: 999px;
+
+    background: $primary-color;
+
+    color: #ffffff;
+
+    text-decoration: none;
+
+    font-size: 0.85rem;
+    font-weight: 600;
+
+    box-shadow: 0 6px 20px rgba(124, 58, 237, 0.12);
+
+    transition:
+      transform 0.2s ease,
+      background-color 0.2s ease,
+      box-shadow 0.2s ease,
+      border-color 0.2s ease;
+
+    span {
+      font-size: 0.9rem;
+
+      line-height: 1;
+    }
+
+    &:hover,
+    &:focus-visible {
+      color: #ffffff;
+
+      text-decoration: none;
+
+      transform: translateY(-1px);
+
+      background: lighten($primary-color, 4%);
+
+      border-color: rgba(167, 139, 250, 0.35);
+
+      box-shadow:
+        0 8px 24px rgba(124, 58, 237, 0.25),
+        0 0 20px rgba(124, 58, 237, 0.08);
+    }
+
+    &:active {
+      transform: translateY(0);
     }
   }
 
@@ -206,6 +304,7 @@
     padding: 8px;
 
     border: 0;
+
     background: transparent;
 
     cursor: pointer;
@@ -245,7 +344,7 @@
 // Tablet
 // ========================================
 
-@media (max-width: 900px) {
+@media (max-width: 1000px) {
   .navbar {
     &__nav {
       gap: 24px;
@@ -253,6 +352,12 @@
 
     &__link {
       font-size: 0.9rem;
+    }
+
+    &__cta {
+      padding: 10px 15px;
+
+      font-size: 0.82rem;
     }
   }
 }
@@ -267,7 +372,10 @@
       position: relative;
     }
 
-    // Keep A. A. on mobile
+    // ----------------------------------------
+    // Logo
+    // ----------------------------------------
+
     &__logo-mark {
       gap: 8px;
     }
@@ -282,19 +390,30 @@
 
     &__logo-dot {
       width: auto;
+
       opacity: 1;
     }
+
+    // ----------------------------------------
+    // Toggle
+    // ----------------------------------------
 
     &__toggle {
       display: flex;
     }
 
+    // ----------------------------------------
+    // Mobile Navigation
+    // ----------------------------------------
+
     &__nav {
       position: absolute;
+
       top: 72px;
       left: 0;
 
       display: flex;
+
       flex-direction: column;
       align-items: flex-start;
 
@@ -304,9 +423,12 @@
 
       padding: 15px 20px 20px;
 
-      background-color: $background-color;
+      background: rgba(7, 11, 24, 0.97);
 
-      border-bottom: 1px solid $border-color;
+      border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
 
       opacity: 0;
       visibility: hidden;
@@ -320,11 +442,16 @@
 
       &.is-open {
         opacity: 1;
+
         visibility: visible;
 
         transform: translateY(0);
       }
     }
+
+    // ----------------------------------------
+    // Mobile Links
+    // ----------------------------------------
 
     &__link {
       width: 100%;
@@ -334,6 +461,40 @@
       &::after {
         display: none;
       }
+
+      &.is-active {
+        color: $primary-color;
+      }
+    }
+
+    // ----------------------------------------
+    // Mobile CTA
+    // ----------------------------------------
+
+    &__cta {
+      width: 100%;
+
+      margin: 8px 0 0;
+
+      padding: 12px 16px;
+
+      border-radius: 8px;
+    }
+  }
+}
+
+// ========================================
+// Small Mobile
+// ========================================
+
+@media (max-width: 480px) {
+  .navbar {
+    &__container {
+      min-height: 68px;
+    }
+
+    &__nav {
+      top: 68px;
     }
   }
 }
@@ -344,10 +505,13 @@
 
 @media (prefers-reduced-motion: reduce) {
   .navbar {
+    transition: none;
+
     &__logo-word,
     &__logo-dot,
     &__logo-full,
     &__link,
+    &__cta,
     &__toggle span,
     &__nav {
       transition: none;

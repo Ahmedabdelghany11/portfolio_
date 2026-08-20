@@ -10,7 +10,7 @@
 
   box-sizing: border-box;
 
-  padding: 24px 0 58px;
+  padding: 12px 0 58px;
 
   overflow: hidden;
 
@@ -148,11 +148,6 @@
 
     color: #f8fafc;
 
-    /*
-      Kept large enough to remain the main
-      visual element, but with more vertical
-      room for letters such as g and y.
-    */
     font-size: clamp(3.35rem, 5.2vw, 5.15rem);
 
     font-weight: 800;
@@ -239,6 +234,64 @@
     flex-wrap: wrap;
 
     gap: 11px;
+
+    a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+    }
+  }
+
+  // ========================================
+  // Tech Stack
+  // ========================================
+
+  &__stack {
+    display: flex;
+
+    align-items: center;
+
+    flex-wrap: wrap;
+
+    gap: 7px;
+
+    margin-top: 18px;
+
+    span {
+      display: inline-flex;
+
+      align-items: center;
+
+      padding: 5px 9px;
+
+      border: 1px solid rgba(148, 163, 184, 0.12);
+
+      border-radius: 6px;
+
+      background: rgba(15, 23, 42, 0.45);
+
+      color: #64748b;
+
+      font-size: 0.62rem;
+
+      font-weight: 500;
+
+      line-height: 1.2;
+
+      transition:
+        color 0.2s ease,
+        border-color 0.2s ease,
+        background-color 0.2s ease;
+
+      &:hover {
+        border-color: rgba(124, 58, 237, 0.35);
+
+        background: rgba(124, 58, 237, 0.06);
+
+        color: #a78bfa;
+      }
+    }
   }
 
   // ========================================
@@ -374,6 +427,10 @@
 
     &__role {
       font-size: 1.3rem;
+    }
+
+    &__stack {
+      margin-top: 16px;
     }
 
     &__scroll {
@@ -512,6 +569,24 @@
     }
 
     // ========================================
+    // Stack
+    // ========================================
+
+    &__stack {
+      justify-content: flex-start;
+
+      gap: 6px;
+
+      margin-top: 18px;
+
+      span {
+        padding: 5px 8px;
+
+        font-size: 0.6rem;
+      }
+    }
+
+    // ========================================
     // Scroll
     // ========================================
 
@@ -572,11 +647,17 @@
 // ========================================
 
 @media (prefers-reduced-motion: reduce) {
-  .hero__scroll-icon span {
-    animation: none;
-  }
+  .hero {
+    &__scroll-icon span {
+      animation: none;
+    }
 
-  .hero__scroll {
-    transition: none;
+    &__scroll {
+      transition: none;
+    }
+
+    &__stack span {
+      transition: none;
+    }
   }
 }

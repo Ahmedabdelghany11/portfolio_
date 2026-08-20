@@ -112,10 +112,10 @@
   }
 
   &__image {
+    display: block;
+
     width: 100%;
     height: 100%;
-
-    display: block;
 
     object-fit: cover;
 
@@ -136,14 +136,18 @@
     }
   }
 
+  // ========================================
+  // Image Glow
+  // ========================================
+
   &__image-glow {
     position: absolute;
 
-    width: 220px;
-    height: 220px;
-
     left: 50%;
     bottom: 25px;
+
+    width: 220px;
+    height: 220px;
 
     transform: translateX(-50%);
 
@@ -158,30 +162,78 @@
     z-index: 1;
   }
 
-  &__visual-label {
+  // ========================================
+  // Identity Card
+  // ========================================
+
+  &__identity {
     position: absolute;
 
-    left: -18px;
-    bottom: 40px;
+    right: 0;
+    bottom: 32px;
 
     z-index: 3;
 
-    padding: 8px 11px;
+    display: flex;
+    flex-direction: column;
+
+    min-width: 190px;
+
+    padding: 14px 17px;
 
     border: 1px solid rgba(139, 92, 246, 0.28);
 
-    border-radius: 6px;
+    border-radius: 10px;
 
-    background: rgba(9, 14, 28, 0.82);
+    background: rgba(9, 14, 28, 0.88);
 
+    box-shadow:
+      0 18px 45px rgba(0, 0, 0, 0.3),
+      0 0 30px rgba(124, 58, 237, 0.08);
+
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+
+    transition:
+      transform 0.3s ease,
+      border-color 0.3s ease,
+      box-shadow 0.3s ease;
+  }
+
+  &__identity:hover {
+    transform: translateY(-3px);
+
+    border-color: rgba(139, 92, 246, 0.45);
+
+    box-shadow:
+      0 22px 50px rgba(0, 0, 0, 0.35),
+      0 0 35px rgba(124, 58, 237, 0.12);
+  }
+
+  &__identity-name {
+    margin-bottom: 4px;
+
+    color: $text-color;
+
+    font-size: 0.88rem;
+    font-weight: 600;
+
+    line-height: 1.35;
+
+    letter-spacing: -0.01em;
+  }
+
+  &__identity-role {
     color: $primary-light;
 
     font-size: 0.65rem;
     font-weight: 600;
 
-    letter-spacing: 0.12em;
+    line-height: 1.4;
 
-    backdrop-filter: blur(10px);
+    letter-spacing: 0.1em;
+
+    text-transform: uppercase;
   }
 
   // ========================================
@@ -191,6 +243,10 @@
   &__info {
     min-width: 0;
   }
+
+  // ========================================
+  // Story
+  // ========================================
 
   &__story {
     max-width: 650px;
@@ -240,6 +296,41 @@
     padding: 24px 0;
 
     border-bottom: 1px solid $border-color;
+
+    transition:
+      padding-left 0.25s ease,
+      border-color 0.25s ease;
+
+    &:hover {
+      padding-left: 5px;
+
+      border-color: rgba(139, 92, 246, 0.3);
+
+      .about__highlight-number {
+        color: $primary-color;
+      }
+
+      .about__highlight-arrow {
+        opacity: 1;
+
+        transform: translateX(0);
+      }
+    }
+  }
+
+  // ========================================
+  // Highlight Heading
+  // ========================================
+
+  &__highlight-heading {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 16px;
+
+    margin-bottom: 6px;
   }
 
   &__highlight-number {
@@ -248,20 +339,29 @@
     color: $primary-light;
 
     font-size: 0.7rem;
-
     font-weight: 700;
 
+    line-height: 1.5;
+
     letter-spacing: 0.06em;
+
+    transition: color 0.25s ease;
   }
 
   &__highlight-content {
+    min-width: 0;
+
     h3 {
-      margin: 0 0 6px;
+      min-width: 0;
+
+      margin: 0;
 
       color: $text-color;
 
       font-size: 0.98rem;
       font-weight: 600;
+
+      line-height: 1.4;
     }
 
     p {
@@ -277,13 +377,34 @@
     }
   }
 
+  &__highlight-arrow {
+    flex-shrink: 0;
+
+    color: $primary-light;
+
+    font-size: 1rem;
+    font-weight: 400;
+
+    line-height: 1;
+
+    opacity: 0;
+
+    transform: translateX(-6px);
+
+    transition:
+      opacity 0.25s ease,
+      transform 0.25s ease;
+  }
+
   // ========================================
-  // Bottom Tags
+  // Bottom Facts
   // ========================================
 
   &__facts {
     display: flex;
+
     flex-wrap: wrap;
+
     gap: 10px 12px;
 
     margin-top: 70px;
@@ -295,13 +416,28 @@
       padding: 7px 11px;
 
       border: 1px solid $border-color;
+
       border-radius: 5px;
 
       color: #94a3b8;
+
       background: rgba(15, 23, 42, 0.35);
 
       font-size: 0.7rem;
       font-weight: 500;
+
+      transition:
+        color 0.2s ease,
+        border-color 0.2s ease,
+        background-color 0.2s ease;
+
+      &:hover {
+        border-color: rgba(139, 92, 246, 0.3);
+
+        color: $text-color;
+
+        background: rgba(124, 58, 237, 0.06);
+      }
     }
   }
 }
@@ -332,6 +468,13 @@
       width: min(100%, 320px);
     }
 
+    &__identity {
+      right: -5px;
+      bottom: 25px;
+
+      min-width: 175px;
+    }
+
     &__story {
       margin-bottom: 40px;
     }
@@ -350,6 +493,10 @@
       margin-bottom: 45px;
     }
 
+    // ========================================
+    // Header
+    // ========================================
+
     &__eyebrow {
       margin-bottom: 12px;
 
@@ -362,11 +509,19 @@
       line-height: 1.02;
     }
 
+    // ========================================
+    // Content
+    // ========================================
+
     &__content {
       grid-template-columns: 1fr;
 
       gap: 50px;
     }
+
+    // ========================================
+    // Visual
+    // ========================================
 
     &__visual {
       min-height: auto;
@@ -380,10 +535,39 @@
       margin: 0 auto;
     }
 
-    &__visual-label {
-      left: 12px;
-      bottom: 25px;
+    &__image-glow {
+      bottom: 15px;
+
+      width: 180px;
+      height: 180px;
     }
+
+    // ========================================
+    // Identity
+    // ========================================
+
+    &__identity {
+      right: 12px;
+      bottom: 22px;
+
+      min-width: 175px;
+
+      padding: 12px 14px;
+
+      border-radius: 9px;
+    }
+
+    &__identity-name {
+      font-size: 0.82rem;
+    }
+
+    &__identity-role {
+      font-size: 0.6rem;
+    }
+
+    // ========================================
+    // Story
+    // ========================================
 
     &__story {
       margin-bottom: 40px;
@@ -401,12 +585,24 @@
       line-height: 1.65 !important;
     }
 
+    // ========================================
+    // Highlights
+    // ========================================
+
     &__highlight {
       grid-template-columns: 35px 1fr;
 
       gap: 12px;
 
       padding: 20px 0;
+
+      &:hover {
+        padding-left: 0;
+      }
+    }
+
+    &__highlight-heading {
+      gap: 10px;
     }
 
     &__highlight-content {
@@ -419,6 +615,18 @@
       }
     }
 
+    &__highlight-arrow {
+      opacity: 1;
+
+      transform: none;
+
+      font-size: 0.9rem;
+    }
+
+    // ========================================
+    // Facts
+    // ========================================
+
     &__facts {
       margin-top: 50px;
 
@@ -427,6 +635,90 @@
       span {
         font-size: 0.68rem;
       }
+    }
+  }
+}
+
+// ========================================
+// Small Mobile
+// ========================================
+
+@media (max-width: 480px) {
+  .about {
+    padding: 78px 0;
+
+    &__title {
+      font-size: 2.45rem;
+    }
+
+    &__image-wrapper {
+      width: min(100%, 320px);
+
+      border-radius: 18px;
+    }
+
+    &__identity {
+      right: 8px;
+      bottom: 18px;
+
+      min-width: 160px;
+
+      padding: 11px 13px;
+    }
+
+    &__identity-name {
+      font-size: 0.78rem;
+    }
+
+    &__identity-role {
+      font-size: 0.56rem;
+    }
+  }
+}
+
+// ========================================
+// Very Small Screens
+// ========================================
+
+@media (max-width: 360px) {
+  .about {
+    padding: 70px 0;
+
+    &__title {
+      font-size: 2.25rem;
+    }
+
+    &__identity {
+      right: 6px;
+      bottom: 15px;
+
+      min-width: 145px;
+
+      padding: 10px 11px;
+    }
+
+    &__identity-name {
+      font-size: 0.74rem;
+    }
+
+    &__identity-role {
+      font-size: 0.52rem;
+    }
+  }
+}
+
+// ========================================
+// Reduced Motion
+// ========================================
+
+@media (prefers-reduced-motion: reduce) {
+  .about {
+    &__image,
+    &__identity,
+    &__highlight,
+    &__highlight-arrow,
+    &__facts span {
+      transition: none;
     }
   }
 }
