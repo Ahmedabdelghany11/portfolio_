@@ -1,93 +1,105 @@
-// import SectionTitle from "../../components/SectionTitle/SectionTitle";
+import aboutImage from "../../assets/images/avatar.jpeg";
 
-// const focusAreas = [
-//   {
-//     number: "01",
-//     title: "Reusable Components",
-//   },
-//   {
-//     number: "02",
-//     title: "API Integration",
-//   },
-//   {
-//     number: "03",
-//     title: "Responsive Interfaces",
-//   },
-//   {
-//     number: "04",
-//     title: "ٌMaintainable & Scalable Web Applications",
-//   },
-// ];
+import "./_about.scss";
+
+const highlights = [
+  {
+    number: "01",
+    title: "Frontend Development",
+    text: "Building scalable and responsive web applications with React.js.",
+  },
+  {
+    number: "02",
+    title: "API & State Management",
+    text: "Working with REST APIs, Redux Toolkit, and React Query for data-driven applications.",
+  },
+  {
+    number: "03",
+    title: "Clean & Maintainable UI",
+    text: "Creating reusable components with a strong focus on performance and user experience.",
+  },
+];
 
 function About() {
   return (
     <section className="about" id="about">
       <div className="container">
         <div className="about__header">
-          <span className="about__eyebrow">About Me</span>
+          <span className="about__eyebrow">
+            About Me
+          </span>
 
           <h2 className="about__title">
-            Building interfaces with a focus on clarity, usability, and
-            scalability.
+            Building interfaces with
+            <span> purpose.</span>
           </h2>
         </div>
 
         <div className="about__content">
-          <div className="about__text">
-            <p>
-              I'm a Frontend Developer focused on building scalable and
-              responsive web applications.
-            </p>
+          <div className="about__visual">
+            <div className="about__image-wrapper">
+              <img
+                src={aboutImage}
+                alt="Ahmed Abdelghany"
+                className="about__image"
+              />
+            </div>
 
-            <p>
-              I work mainly with React.js and modern frontend technologies, with
-              experience building production web applications and reusable UI
-              components.
-            </p>
+            <div className="about__image-glow" />
 
-            <p>
-              I enjoy turning requirements and designs into clean, maintainable,
-              and responsive interfaces.
-            </p>
+            <span className="about__visual-label">
+              FRONTEND / REACT
+            </span>
           </div>
 
-          <div className="about__highlights">
-            <div className="about__highlight">
-              <span className="about__highlight-number">01</span>
+          <div className="about__info">
+            <div className="about__story">
+              <p className="about__lead">
+                I'm a Frontend Developer focused on building
+                scalable, responsive, and maintainable web
+                applications.
+              </p>
 
-              <div>
-                <h3>Frontend Development</h3>
-                <p>
-                  Building responsive interfaces with React.js and modern
-                  frontend technologies.
-                </p>
-              </div>
+              <p>
+                I work mainly with React.js and modern frontend
+                technologies, with hands-on experience building
+                production-level web applications and reusable
+                user interfaces.
+              </p>
+
+              <p>
+                My work combines frontend development, API
+                integration, state management, and responsive
+                design to turn requirements and ideas into
+                reliable web experiences.
+              </p>
             </div>
 
-            <div className="about__highlight">
-              <span className="about__highlight-number">02</span>
+            <div className="about__highlights">
+              {highlights.map((highlight) => (
+                <div
+                  className="about__highlight"
+                  key={highlight.number}
+                >
+                  <span className="about__highlight-number">
+                    {highlight.number}
+                  </span>
 
-              <div>
-                <h3>Production Applications</h3>
-                <p>
-                  Experience working on real-world web applications and
-                  marketplace platforms.
-                </p>
-              </div>
-            </div>
+                  <div className="about__highlight-content">
+                    <h3>{highlight.title}</h3>
 
-            <div className="about__highlight">
-              <span className="about__highlight-number">03</span>
-
-              <div>
-                <h3>Physics & Computer Science</h3>
-                <p>
-                  Background combining physics, computer science, and
-                  problem-solving.
-                </p>
-              </div>
+                    <p>{highlight.text}</p>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
+        </div>
+
+        <div className="about__facts">
+          <span>Computer Science</span>
+          <span>Production Web Applications</span>
+          <span>REST API Integration</span>
         </div>
       </div>
     </section>

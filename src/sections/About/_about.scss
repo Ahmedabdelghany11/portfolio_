@@ -1,28 +1,41 @@
 @use "../../assets/styles/config" as *;
 
 .about {
-  padding: 110px 0;
+  position: relative;
 
-  // ==============================
+  padding: 140px 0;
+
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at 15% 45%,
+      rgba(124, 58, 237, 0.055),
+      transparent 24%
+    ),
+    $background-color;
+
+  // ========================================
   // Header
-  // ==============================
+  // ========================================
 
   &__header {
-    max-width: 850px;
+    max-width: 900px;
 
-    margin-bottom: 65px;
+    margin-bottom: 80px;
   }
 
   &__eyebrow {
     display: block;
 
-    margin-bottom: 18px;
+    margin-bottom: 16px;
 
-    color: $primary-color;
+    color: $primary-light;
 
-    font-size: 0.85rem;
+    font-size: 0.72rem;
     font-weight: 700;
-    letter-spacing: 0.04em;
+
+    letter-spacing: 0.16em;
     text-transform: uppercase;
   }
 
@@ -31,41 +44,167 @@
 
     color: $text-color;
 
-    font-size: clamp(2.2rem, 5vw, 4rem);
-    font-weight: 700;
-    line-height: 1.1;
+    font-size: clamp(2.8rem, 5.5vw, 5rem);
+    font-weight: 750;
 
-    letter-spacing: normal;
+    line-height: 1;
+
+    letter-spacing: -0.04em;
+
+    span {
+      color: $primary-light;
+    }
   }
 
-  // ==============================
+  // ========================================
   // Content
-  // ==============================
+  // ========================================
 
   &__content {
     display: grid;
 
-    grid-template-columns: minmax(280px, 0.9fr) minmax(320px, 1.1fr);
+    grid-template-columns: 0.82fr 1.18fr;
 
     gap: 90px;
 
-    align-items: start;
+    align-items: center;
   }
 
-  // ==============================
-  // Text
-  // ==============================
+  // ========================================
+  // Visual
+  // ========================================
 
-  &__text {
-    max-width: 600px;
+  &__visual {
+    position: relative;
+
+    min-height: 520px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__image-wrapper {
+    position: relative;
+
+    width: min(100%, 390px);
+
+    aspect-ratio: 0.82;
+
+    overflow: hidden;
+
+    border: 1px solid rgba(139, 92, 246, 0.28);
+
+    border-radius: 22px;
+
+    background: linear-gradient(
+      145deg,
+      rgba(15, 23, 42, 0.85),
+      rgba(10, 15, 29, 0.95)
+    );
+
+    box-shadow:
+      0 35px 80px rgba(0, 0, 0, 0.35),
+      0 0 60px rgba(124, 58, 237, 0.08);
+
+    z-index: 2;
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+
+    object-position: center top;
+
+    filter: saturate(0.9);
+
+    transition:
+      transform 0.6s ease,
+      filter 0.4s ease;
+  }
+
+  &__image-wrapper:hover {
+    .about__image {
+      transform: scale(1.025);
+
+      filter: saturate(1);
+    }
+  }
+
+  &__image-glow {
+    position: absolute;
+
+    width: 220px;
+    height: 220px;
+
+    left: 50%;
+    bottom: 25px;
+
+    transform: translateX(-50%);
+
+    border-radius: 50%;
+
+    background: rgba(124, 58, 237, 0.2);
+
+    filter: blur(80px);
+
+    pointer-events: none;
+
+    z-index: 1;
+  }
+
+  &__visual-label {
+    position: absolute;
+
+    left: -18px;
+    bottom: 40px;
+
+    z-index: 3;
+
+    padding: 8px 11px;
+
+    border: 1px solid rgba(139, 92, 246, 0.28);
+
+    border-radius: 6px;
+
+    background: rgba(9, 14, 28, 0.82);
+
+    color: $primary-light;
+
+    font-size: 0.65rem;
+    font-weight: 600;
+
+    letter-spacing: 0.12em;
+
+    backdrop-filter: blur(10px);
+  }
+
+  // ========================================
+  // Info
+  // ========================================
+
+  &__info {
+    min-width: 0;
+  }
+
+  &__story {
+    max-width: 650px;
+
+    margin-bottom: 55px;
 
     p {
-      margin: 0 0 20px;
+      margin: 0 0 22px;
 
       color: $muted-color;
 
-      font-size: 1rem;
-      line-height: 1.8;
+      font-size: 0.98rem;
+
+      line-height: 1.85;
 
       &:last-child {
         margin-bottom: 0;
@@ -73,15 +212,21 @@
     }
   }
 
-  // ==============================
+  &__lead {
+    color: #e2e8f0 !important;
+
+    font-size: 1.25rem !important;
+
+    font-weight: 500;
+
+    line-height: 1.65 !important;
+  }
+
+  // ========================================
   // Highlights
-  // ==============================
+  // ========================================
 
   &__highlights {
-    display: flex;
-
-    flex-direction: column;
-
     border-top: 1px solid $border-color;
   }
 
@@ -90,7 +235,7 @@
 
     grid-template-columns: 45px 1fr;
 
-    gap: 20px;
+    gap: 18px;
 
     padding: 24px 0;
 
@@ -98,86 +243,162 @@
   }
 
   &__highlight-number {
-    padding-top: 3px;
+    padding-top: 2px;
 
-    color: $primary-color;
+    color: $primary-light;
 
-    font-size: 0.8rem;
+    font-size: 0.7rem;
+
     font-weight: 700;
+
+    letter-spacing: 0.06em;
   }
 
-  &__highlight h3 {
-    margin: 0 0 7px;
+  &__highlight-content {
+    h3 {
+      margin: 0 0 6px;
 
-    color: $text-color;
+      color: $text-color;
 
-    font-size: 1rem;
-    font-weight: 600;
+      font-size: 0.98rem;
+      font-weight: 600;
+    }
+
+    p {
+      max-width: 520px;
+
+      margin: 0;
+
+      color: $muted-color;
+
+      font-size: 0.87rem;
+
+      line-height: 1.65;
+    }
   }
 
-  &__highlight p {
-    max-width: 450px;
+  // ========================================
+  // Bottom Tags
+  // ========================================
 
-    margin: 0;
+  &__facts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 12px;
 
-    color: $muted-color;
+    margin-top: 70px;
+    padding-top: 25px;
 
-    font-size: 0.9rem;
-    line-height: 1.6;
+    border-top: 1px solid $border-color;
+
+    span {
+      padding: 7px 11px;
+
+      border: 1px solid $border-color;
+      border-radius: 5px;
+
+      color: #94a3b8;
+      background: rgba(15, 23, 42, 0.35);
+
+      font-size: 0.7rem;
+      font-weight: 500;
+    }
   }
 }
 
-// ==============================
+// ========================================
 // Tablet
-// ==============================
+// ========================================
 
-@media (max-width: 900px) {
+@media (max-width: 1000px) {
   .about {
-    padding: 90px 0;
+    padding: 110px 0;
+
+    &__header {
+      margin-bottom: 60px;
+    }
 
     &__content {
-      grid-template-columns: 1fr;
+      grid-template-columns: 0.75fr 1.25fr;
 
       gap: 55px;
     }
 
-    &__header {
-      margin-bottom: 50px;
+    &__visual {
+      min-height: 460px;
+    }
+
+    &__image-wrapper {
+      width: min(100%, 320px);
+    }
+
+    &__story {
+      margin-bottom: 40px;
     }
   }
 }
 
-// ==============================
+// ========================================
 // Mobile
-// ==============================
+// ========================================
 
-@media (max-width: 600px) {
+@media (max-width: 767px) {
   .about {
-    padding: 70px 0;
+    padding: 90px 0;
 
     &__header {
-      margin-bottom: 40px;
+      margin-bottom: 45px;
     }
 
     &__eyebrow {
       margin-bottom: 12px;
 
-      font-size: 0.75rem;
+      font-size: 0.66rem;
     }
 
     &__title {
-      font-size: 2.2rem;
+      font-size: 2.7rem;
+
+      line-height: 1.02;
     }
 
     &__content {
-      gap: 40px;
+      grid-template-columns: 1fr;
+
+      gap: 50px;
     }
 
-    &__text {
+    &__visual {
+      min-height: auto;
+
+      justify-content: flex-start;
+    }
+
+    &__image-wrapper {
+      width: min(100%, 340px);
+
+      margin: 0 auto;
+    }
+
+    &__visual-label {
+      left: 12px;
+      bottom: 25px;
+    }
+
+    &__story {
+      margin-bottom: 40px;
+
       p {
-        font-size: 0.95rem;
-        line-height: 1.7;
+        font-size: 0.9rem;
+
+        line-height: 1.75;
       }
+    }
+
+    &__lead {
+      font-size: 1.1rem !important;
+
+      line-height: 1.65 !important;
     }
 
     &__highlight {
@@ -188,12 +409,24 @@
       padding: 20px 0;
     }
 
-    &__highlight h3 {
-      font-size: 0.95rem;
+    &__highlight-content {
+      h3 {
+        font-size: 0.92rem;
+      }
+
+      p {
+        font-size: 0.82rem;
+      }
     }
 
-    &__highlight p {
-      font-size: 0.85rem;
+    &__facts {
+      margin-top: 50px;
+
+      gap: 8px;
+
+      span {
+        font-size: 0.68rem;
+      }
     }
   }
 }
