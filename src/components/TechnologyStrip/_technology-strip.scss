@@ -1,0 +1,83 @@
+@use "../../assets/styles/config" as *;
+
+.technology-strip {
+  padding: 28px 0 34px;
+
+  border-top: 1px solid $border-color;
+  border-bottom: 1px solid $border-color;
+
+  background: linear-gradient(
+    180deg,
+    rgba(13, 19, 36, 0.6),
+    rgba(7, 11, 24, 0.95)
+  );
+
+  overflow: hidden;
+
+  &__list {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 18px;
+    flex-wrap: wrap;
+  }
+
+  &__item {
+    display: inline-flex;
+    align-items: center;
+
+    gap: 9px;
+
+    color: #94a3b8;
+
+    font-size: 0.78rem;
+    font-weight: 500;
+
+    transition:
+      color 0.2s ease,
+      transform 0.2s ease;
+
+    &:hover {
+      color: #f8fafc;
+      transform: translateY(-2px);
+    }
+  }
+
+  &__icon {
+    flex-shrink: 0;
+
+    width: 18px;
+    height: 18px;
+
+    color: #a78bfa;
+  }
+}
+
+@media (max-width: 900px) {
+  .technology-strip {
+    &__list {
+      justify-content: flex-start;
+      gap: 18px 26px;
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .technology-strip {
+    padding: 24px 0 26px;
+
+    &__list {
+      gap: 15px 20px;
+    }
+
+    &__item {
+      font-size: 0.72rem;
+    }
+
+    &__icon {
+      width: 16px;
+      height: 16px;
+    }
+  }
+}

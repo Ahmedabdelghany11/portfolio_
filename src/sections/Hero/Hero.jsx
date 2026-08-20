@@ -1,12 +1,12 @@
 import Button from "../../components/Button/Button";
-import HeroScene from "../../components/HeroScene/HeroScene";
+import DeveloperWorkspace from "../../components/DeveloperWorkspace/DeveloperWorkspace";
 
 function Hero() {
   return (
     <section className="hero" id="home">
-      <HeroScene />
+      <DeveloperWorkspace />
 
-      <div className="hero__glow" />
+      <div className="hero__overlay" />
 
       <div className="container">
         <div className="hero__content">
@@ -23,31 +23,42 @@ function Hero() {
               <span>Abdelghany</span>
             </h1>
 
-            <h2 className="hero__role">React Frontend Engineer</h2>
+            <h2 className="hero__role">Building modern web experiences</h2>
 
             <p className="hero__description">
-              I build scalable, responsive web applications with React.js and
-              modern frontend technologies, with a strong focus on
-              maintainability, performance, and user experience.
+              I build scalable, responsive, and maintainable web applications
+              using modern frontend technologies, with a strong focus on clean
+              architecture, performance, and user experience.
             </p>
 
-            <div className="hero__technologies">
-              <span>React.js</span>
-              <span>TypeScript</span>
-              <span>Redux Toolkit</span>
-              <span>React Query</span>
-            </div>
-
             <div className="hero__actions">
-              <Button href="#projects">View My Work</Button>
+              <Button href="#projects">
+                View My Work
+                <span>→</span>
+              </Button>
 
               <Button href="#contact" variant="secondary">
                 Let's Connect
+                <span>↗</span>
               </Button>
             </div>
           </div>
         </div>
       </div>
+
+      <a
+        href="#about"
+        className="hero__scroll"
+        aria-label="Scroll to About section"
+      >
+        <span className="hero__scroll-icon">
+          <span />
+        </span>
+
+        <span className="hero__scroll-text">Scroll Down</span>
+
+        <span className="hero__scroll-line" />
+      </a>
     </section>
   );
 }
