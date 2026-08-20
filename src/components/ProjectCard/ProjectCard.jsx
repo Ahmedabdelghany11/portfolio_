@@ -3,9 +3,27 @@ import "./_project-card.scss";
 function ProjectCard({ project }) {
   return (
     <article className="project-card">
-      {/* Preview */}
+      {/* ========================================
+          Preview
+      ======================================== */}
+
       <div className="project-card__preview">
-        <img src={project.image} alt={`${project.name} project preview`} />
+        <img
+          src={project.image}
+          alt={`${project.name} project preview`}
+        />
+
+        <div className="project-card__preview-overlay" />
+
+        <div className="project-card__preview-meta">
+          <span className="project-card__number">
+            {project.number}
+          </span>
+
+          <span className="project-card__category">
+            {project.category}
+          </span>
+        </div>
 
         {project.live && (
           <a
@@ -15,32 +33,68 @@ function ProjectCard({ project }) {
             rel="noopener noreferrer"
             aria-label={`Open ${project.name} live demo`}
           >
-            ↗
+            <span>↗</span>
           </a>
         )}
       </div>
 
-      {/* Content */}
+      {/* ========================================
+          Content
+      ======================================== */}
+
       <div className="project-card__content">
-        {/* Meta */}
-        <div className="project-card__meta">
-          <span className="project-card__number">{project.number}</span>
+        {/* Title */}
 
-          <span className="project-card__category">{project.category}</span>
+        <div className="project-card__heading">
+          <span className="project-card__eyebrow">
+            Featured Project
+          </span>
+
+          <h3 className="project-card__title">
+            {project.name}
+          </h3>
         </div>
 
-        {/* Main Content */}
-        <div className="project-card__main">
-          <h3 className="project-card__title">{project.name}</h3>
+        {/* Description */}
 
-          <p className="project-card__description">{project.description}</p>
-        </div>
+        <p className="project-card__description">
+          {project.description}
+        </p>
 
-        {/* Bottom */}
-        <div className="project-card__bottom">
+        {/* ========================================
+            Features
+        ======================================== */}
+
+        {project.features?.length > 0 && (
+          <div className="project-card__features">
+            <span className="project-card__features-label">
+              Key Features
+            </span>
+
+            <div className="project-card__features-list">
+              {project.features.slice(0, 4).map((feature) => (
+                <span
+                  className="project-card__feature"
+                  key={feature}
+                >
+                  {feature}
+                </span>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* ========================================
+            Footer
+        ======================================== */}
+
+        <div className="project-card__footer">
           <div className="project-card__technologies">
             {project.technologies.map((technology) => (
-              <span key={technology} className="project-card__technology">
+              <span
+                className="project-card__technology"
+                key={technology}
+              >
                 {technology}
               </span>
             ))}
@@ -53,13 +107,19 @@ function ProjectCard({ project }) {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                GitHub ↗
+                GitHub
+                <span>↗</span>
               </a>
             )}
 
             {project.live && (
-              <a href={project.live} target="_blank" rel="noopener noreferrer">
-                Live Demo ↗
+              <a
+                href={project.live}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Live Demo
+                <span>↗</span>
               </a>
             )}
           </div>

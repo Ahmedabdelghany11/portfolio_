@@ -1,17 +1,29 @@
 @use "../../assets/styles/config" as *;
 
 .project-card {
-  display: grid;
+  position: relative;
 
-  grid-template-columns: minmax(300px, 0.95fr) minmax(0, 1.05fr);
+  width: min(760px, 100%);
 
-  gap: 55px;
+  overflow: hidden;
 
-  align-items: center;
+  border: 1px solid rgba(148, 163, 184, 0.14);
 
-  padding: 0 0 55px;
+  border-radius: 16px;
 
-  border-bottom: 1px solid $border-color;
+  background: linear-gradient(
+    145deg,
+    rgba(15, 23, 42, 0.96),
+    rgba(7, 12, 26, 0.98)
+  );
+
+  box-shadow:
+    0 25px 70px rgba(0, 0, 0, 0.28),
+    0 0 0 1px rgba(124, 58, 237, 0.015);
+
+  transition:
+    border-color 0.5s ease,
+    box-shadow 0.5s ease;
 
   // ========================================
   // Preview
@@ -22,81 +34,142 @@
 
     width: 100%;
 
-    aspect-ratio: 16 / 10;
+    aspect-ratio: 16 / 9;
 
     overflow: hidden;
 
-    border-radius: 12px;
-
-    background-color: $background-secondary;
+    background: $background-secondary;
 
     img {
       width: 100%;
       height: 100%;
-      aspect-ratio: inherit;
 
       display: block;
 
       object-fit: cover;
       object-position: center;
 
-      transition: transform 0.4s ease;
+      transition: transform 0.7s ease;
     }
   }
 
-  &:hover {
-    .project-card__preview img {
-      transform: scale(1.025);
-    }
+  &__preview-overlay {
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    background: linear-gradient(
+      to bottom,
+      rgba(4, 8, 20, 0.02) 45%,
+      rgba(4, 8, 20, 0.35) 100%
+    );
   }
 
   // ========================================
-  // Preview Button
+  // Preview Meta
+  // ========================================
+
+  &__preview-meta {
+    position: absolute;
+
+    top: 15px;
+    left: 15px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+  }
+
+  &__number {
+    min-width: 31px;
+
+    padding: 5px 8px;
+
+    border: 1px solid rgba(139, 92, 246, 0.35);
+
+    border-radius: 5px;
+
+    color: $primary-light;
+
+    background: rgba(7, 12, 26, 0.72);
+
+    font-size: 0.62rem;
+
+    font-weight: 700;
+
+    text-align: center;
+
+    backdrop-filter: blur(10px);
+  }
+
+  &__category {
+    padding: 5px 9px;
+
+    border: 1px solid rgba(148, 163, 184, 0.18);
+
+    border-radius: 5px;
+
+    color: #cbd5e1;
+
+    background: rgba(7, 12, 26, 0.68);
+
+    font-size: 0.62rem;
+
+    font-weight: 600;
+
+    letter-spacing: 0.04em;
+
+    backdrop-filter: blur(10px);
+  }
+
+  // ========================================
+  // Preview Link
   // ========================================
 
   &__preview-link {
     position: absolute;
 
-    right: 16px;
-    bottom: 16px;
+    right: 15px;
+    bottom: 15px;
 
-    width: 42px;
-    height: 42px;
+    width: 38px;
+    height: 38px;
 
     display: flex;
 
     align-items: center;
     justify-content: center;
 
+    border: 1px solid rgba(255, 255, 255, 0.14);
+
     border-radius: 50%;
 
-    color: $text-color;
-    background-color: $background-color;
+    color: #ffffff;
+
+    background: rgba(7, 12, 26, 0.7);
+
+    font-size: 0.95rem;
 
     text-decoration: none;
 
-    font-size: 1.1rem;
-
-    opacity: 0;
-
-    transform: translateY(5px);
+    backdrop-filter: blur(10px);
 
     transition:
-      opacity 0.25s ease,
-      transform 0.25s ease,
-      background-color 0.25s ease;
+      background-color 0.25s ease,
+      border-color 0.25s ease,
+      transform 0.25s ease;
 
     &:hover {
-      color: #ffffff;
+      border-color: rgba(139, 92, 246, 0.5);
 
-      background-color: $primary-color;
+      background: $primary-color;
+
+      transform: translateY(-2px);
     }
-  }
-
-  &:hover &__preview-link {
-    opacity: 1;
-
-    transform: translateY(0);
   }
 
   // ========================================
@@ -104,87 +177,137 @@
   // ========================================
 
   &__content {
-    min-width: 0;
-
-    padding: 5px 10px 5px 0;
+    padding: 28px 30px 24px;
   }
 
   // ========================================
-  // Meta
+  // Heading
   // ========================================
 
-  &__meta {
-    display: flex;
-
-    align-items: center;
-
-    gap: 12px;
-
-    margin-bottom: 13px;
+  &__heading {
+    margin-bottom: 12px;
   }
 
-  &__number {
-    color: $primary-color;
+  &__eyebrow {
+    display: block;
 
-    font-size: 0.8rem;
+    margin-bottom: 7px;
+
+    color: $primary-light;
+
+    font-size: 0.58rem;
 
     font-weight: 700;
+
+    letter-spacing: 0.16em;
+
+    text-transform: uppercase;
   }
-
-  &__category {
-    color: $muted-color;
-
-    font-size: 0.8rem;
-
-    font-weight: 500;
-  }
-
-  // ========================================
-  // Main
-  // ========================================
 
   &__title {
-    margin: 0 0 14px;
+    margin: 0;
 
     color: $text-color;
 
-    font-size: clamp(2rem, 4vw, 3rem);
+    font-size: clamp(2rem, 4vw, 2.8rem);
 
     font-weight: 700;
 
-    line-height: 1.1;
+    line-height: 1;
 
-    letter-spacing: normal;
+    letter-spacing: -0.035em;
   }
 
+  // ========================================
+  // Description
+  // ========================================
+
   &__description {
-    max-width: 560px;
+    max-width: 650px;
 
     margin: 0;
 
     color: $muted-color;
 
-    font-size: 0.95rem;
+    font-size: 0.84rem;
 
     line-height: 1.75;
   }
 
   // ========================================
-  // Bottom
+  // Features
   // ========================================
 
-  &__bottom {
+  &__features {
+    display: grid;
+
+    grid-template-columns: 95px minmax(0, 1fr);
+
+    gap: 15px;
+
+    margin-top: 22px;
+
+    padding-top: 17px;
+
+    border-top: 1px solid $border-color;
+  }
+
+  &__features-label {
+    padding-top: 2px;
+
+    color: #64748b;
+
+    font-size: 0.58rem;
+
+    font-weight: 700;
+
+    letter-spacing: 0.09em;
+
+    text-transform: uppercase;
+  }
+
+  &__features-list {
     display: flex;
 
-    align-items: flex-end;
+    flex-wrap: wrap;
+
+    gap: 6px 10px;
+  }
+
+  &__feature {
+    position: relative;
+
+    color: #94a3b8;
+
+    font-size: 0.62rem;
+
+    line-height: 1.5;
+
+    &:not(:last-child)::after {
+      content: "•";
+
+      margin-left: 10px;
+
+      color: #475569;
+    }
+  }
+
+  // ========================================
+  // Footer
+  // ========================================
+
+  &__footer {
+    display: flex;
+
+    align-items: center;
 
     justify-content: space-between;
 
-    gap: 30px;
+    gap: 25px;
 
-    margin-top: 28px;
+    margin-top: 19px;
 
-    padding-top: 20px;
+    padding-top: 16px;
 
     border-top: 1px solid $border-color;
   }
@@ -198,21 +321,21 @@
 
     flex-wrap: wrap;
 
-    gap: 7px;
-
-    max-width: 360px;
+    gap: 6px;
   }
 
   &__technology {
-    padding: 5px 9px;
+    padding: 5px 8px;
 
-    border: 1px solid $border-color;
+    border: 1px solid rgba(148, 163, 184, 0.15);
 
     border-radius: 4px;
 
-    color: $muted-color;
+    color: #94a3b8;
 
-    font-size: 0.72rem;
+    background: rgba(15, 23, 42, 0.35);
+
+    font-size: 0.58rem;
 
     font-weight: 500;
 
@@ -228,16 +351,20 @@
 
     align-items: center;
 
-    gap: 20px;
+    gap: 17px;
 
     flex-shrink: 0;
 
-    padding-right: 2px;
-
     a {
+      display: inline-flex;
+
+      align-items: center;
+
+      gap: 4px;
+
       color: $text-color;
 
-      font-size: 0.82rem;
+      font-size: 0.68rem;
 
       font-weight: 600;
 
@@ -247,9 +374,35 @@
 
       transition: color 0.2s ease;
 
-      &:hover {
-        color: $primary-color;
+      span {
+        color: $primary-light;
+
+        transition: transform 0.2s ease;
       }
+
+      &:hover {
+        color: $primary-light;
+
+        span {
+          transform: translate(2px, -2px);
+        }
+      }
+    }
+  }
+
+  // ========================================
+  // Active Hover
+  // ========================================
+
+  &:hover {
+    border-color: rgba(139, 92, 246, 0.28);
+
+    box-shadow:
+      0 30px 80px rgba(0, 0, 0, 0.35),
+      0 0 45px rgba(124, 58, 237, 0.06);
+
+    .project-card__preview img {
+      transform: scale(1.02);
     }
   }
 }
@@ -260,38 +413,14 @@
 
 @media (max-width: 900px) {
   .project-card {
-    grid-template-columns: 1fr;
-
-    gap: 28px;
-
-    padding-bottom: 45px;
-
-    &__preview {
-      aspect-ratio: 16 / 9;
-    }
+    width: min(680px, 100%);
 
     &__content {
-      padding: 0;
+      padding: 24px 25px 21px;
     }
 
-    &__description {
-      max-width: 700px;
-    }
-
-    &__bottom {
-      align-items: flex-start;
-
-      flex-direction: column;
-
-      gap: 20px;
-    }
-
-    &__technologies {
-      max-width: 100%;
-    }
-
-    &__links {
-      padding-right: 0;
+    &__features {
+      grid-template-columns: 85px minmax(0, 1fr);
     }
   }
 }
@@ -300,72 +429,118 @@
 // Mobile
 // ========================================
 
-@media (max-width: 600px) {
+@media (max-width: 767px) {
   .project-card {
-    gap: 22px;
+    width: 100%;
 
-    padding-bottom: 35px;
+    border-radius: 13px;
 
     &__preview {
-      aspect-ratio: 16 / 10;
+      aspect-ratio: 16 / 9;
+    }
 
-      border-radius: 10px;
+    &__preview-meta {
+      top: 11px;
+      left: 11px;
+    }
+
+    &__number,
+    &__category {
+      padding: 4px 7px;
+
+      font-size: 0.55rem;
     }
 
     &__preview-link {
-      right: 12px;
-      bottom: 12px;
+      right: 11px;
+      bottom: 11px;
 
-      width: 38px;
-      height: 38px;
+      width: 34px;
+      height: 34px;
 
-      opacity: 1;
-
-      transform: none;
+      font-size: 0.85rem;
     }
 
-    &__meta {
-      gap: 10px;
-
-      margin-bottom: 10px;
+    &__content {
+      padding: 22px 19px 19px;
     }
 
     &__title {
-      margin-bottom: 12px;
-
       font-size: 2rem;
     }
 
     &__description {
-      font-size: 0.9rem;
+      font-size: 0.78rem;
 
       line-height: 1.7;
     }
 
-    &__bottom {
-      gap: 17px;
+    &__features {
+      grid-template-columns: 1fr;
 
-      margin-top: 22px;
+      gap: 9px;
 
-      padding-top: 17px;
+      margin-top: 18px;
+
+      padding-top: 15px;
+    }
+
+    &__features-label {
+      padding: 0;
+    }
+
+    &__feature {
+      font-size: 0.59rem;
+    }
+
+    &__footer {
+      align-items: flex-start;
+
+      flex-direction: column;
+
+      gap: 15px;
     }
 
     &__technologies {
-      gap: 6px;
-    }
-
-    &__technology {
-      padding: 5px 8px;
-
-      font-size: 0.7rem;
+      width: 100%;
     }
 
     &__links {
       width: 100%;
 
-      justify-content: flex-start;
+      justify-content: space-between;
+    }
+  }
+}
 
-      gap: 20px;
+// ========================================
+// Small Mobile
+// ========================================
+
+@media (max-width: 480px) {
+  .project-card {
+    &__content {
+      padding: 19px 16px 17px;
+    }
+
+    &__title {
+      font-size: 1.8rem;
+    }
+
+    &__description {
+      font-size: 0.75rem;
+    }
+
+    &__feature {
+      font-size: 0.56rem;
+    }
+
+    &__technology {
+      font-size: 0.55rem;
+    }
+
+    &__links a {
+      font-size: 0.64rem;
     }
   }
 }
