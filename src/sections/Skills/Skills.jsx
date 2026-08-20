@@ -81,11 +81,14 @@ function Skills() {
         <div className="skills__header">
           <span className="skills__eyebrow">What I Work With</span>
 
-          <h2 className="skills__title">Skills & Technologies</h2>
+          <h2 className="skills__title">
+            The tools behind my
+            <span> work.</span>
+          </h2>
 
           <p className="skills__intro">
-            The technologies, tools, and frontend practices I use to build
-            modern and maintainable web applications.
+            A practical stack I use to build scalable, responsive, and
+            maintainable frontend applications.
           </p>
         </div>
 
