@@ -1,241 +1,445 @@
 @use "../../assets/styles/config" as *;
 
 .contact {
-  padding: 120px 0;
+  position: relative;
 
-  // ==============================
+  padding: 130px 0 100px;
+
+  overflow: hidden;
+
+  // Subtle background depth
+  background:
+    radial-gradient(
+      circle at 75% 45%,
+      rgba(124, 58, 237, 0.07),
+      transparent 30%
+    ),
+    $background-color;
+
+  // ========================================
   // Wrapper
-  // ==============================
+  // ========================================
 
   &__wrapper {
-    padding: 70px 0;
+    position: relative;
+
+    padding: 85px 0 70px;
 
     border-top: 1px solid $border-color;
     border-bottom: 1px solid $border-color;
+
+    &::before {
+      content: "";
+
+      position: absolute;
+
+      top: 0;
+      left: 0;
+
+      width: 80px;
+      height: 1px;
+
+      background: $primary-color;
+    }
   }
 
-  // ==============================
+  // ========================================
   // Header
-  // ==============================
+  // ========================================
 
   &__header {
     max-width: 850px;
   }
 
   &__eyebrow {
-    display: block;
+    display: inline-flex;
 
-    margin-bottom: 18px;
+    align-items: center;
 
-    color: $primary-color;
+    gap: 10px;
 
-    font-size: 0.8rem;
+    margin-bottom: 22px;
+
+    color: $primary-light;
+
+    font-size: 0.7rem;
     font-weight: 700;
 
-    letter-spacing: 0.04em;
+    letter-spacing: 0.16em;
     text-transform: uppercase;
+
+    &::before {
+      content: "";
+
+      width: 24px;
+      height: 1px;
+
+      background: $primary-color;
+    }
   }
 
   &__title {
-    max-width: 800px;
+    max-width: 900px;
 
     margin: 0;
 
     color: $text-color;
 
-    font-size: clamp(3rem, 7vw, 5.8rem);
-    font-weight: 700;
+    font-size: clamp(3.2rem, 7vw, 6.2rem);
+    font-weight: 750;
 
     line-height: 0.98;
-    letter-spacing: -0.03em;
+
+    letter-spacing: -0.055em;
 
     span {
-      color: $primary-color;
+      display: block;
+
+      color: $primary-light;
     }
   }
 
-  // ==============================
+  // ========================================
   // Description
-  // ==============================
+  // ========================================
 
   &__description {
-    max-width: 560px;
+    max-width: 610px;
 
-    margin: 28px 0 0;
+    margin: 30px 0 0;
 
     color: $muted-color;
 
-    font-size: 1rem;
-    line-height: 1.75;
+    font-size: 0.98rem;
+
+    line-height: 1.8;
   }
 
-  // ==============================
+  // ========================================
   // Actions
-  // ==============================
+  // ========================================
 
   &__actions {
-    margin-top: 55px;
+    max-width: 900px;
+
+    margin-top: 70px;
   }
 
-  // ==============================
-  // Email
-  // ==============================
+  // ========================================
+  // Email CTA
+  // ========================================
 
   &__email {
+    position: relative;
+
+    display: grid;
+
+    grid-template-columns: auto minmax(0, 1fr) auto;
+
+    align-items: center;
+
+    gap: 25px;
+
+    width: 100%;
+
+    padding: 20px 0 18px;
+
+    border-top: 1px solid $border-color;
+    border-bottom: 1px solid $border-color;
+
+    color: $text-color;
+
+    text-decoration: none;
+
+    transition:
+      border-color 0.25s ease,
+      color 0.25s ease;
+
+    &::before {
+      content: "";
+
+      position: absolute;
+
+      left: 0;
+      bottom: -1px;
+
+      width: 0;
+      height: 1px;
+
+      background: $primary-color;
+
+      transition: width 0.35s ease;
+    }
+
+    &:hover {
+      color: $primary-light;
+
+      border-color: rgba(139, 92, 246, 0.3);
+
+      &::before {
+        width: 100%;
+      }
+
+      .contact__arrow {
+        transform: translate(3px, -3px);
+      }
+    }
+  }
+
+  &__email-label {
+    color: $muted-color;
+
+    font-size: 0.68rem;
+    font-weight: 700;
+
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  &__email-address {
+    min-width: 0;
+
+    overflow: hidden;
+
+    color: inherit;
+
+    font-size: clamp(0.95rem, 2vw, 1.25rem);
+    font-weight: 500;
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &__arrow {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 42px;
+    height: 42px;
+
+    border: 1px solid $border-color;
+    border-radius: 50%;
+
+    color: $text-color;
+
+    font-size: 1rem;
+
+    transition:
+      transform 0.25s ease,
+      border-color 0.25s ease,
+      background-color 0.25s ease;
+
+    .contact__email:hover & {
+      border-color: $primary-color;
+
+      background-color: rgba(124, 58, 237, 0.1);
+    }
+  }
+
+  // ========================================
+  // Footer / Socials
+  // ========================================
+
+  &__footer {
     display: flex;
 
     align-items: center;
     justify-content: space-between;
 
-    gap: 25px;
+    gap: 30px;
 
-    max-width: 720px;
+    margin-top: 30px;
+  }
 
-    padding-bottom: 15px;
+  &__footer-label {
+    color: $muted-color;
 
-    border-bottom: 1px solid $border-color;
+    font-size: 0.7rem;
+    font-weight: 600;
 
-    color: $text-color;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
 
-    font-size: clamp(1.1rem, 2.5vw, 1.5rem);
-    font-weight: 500;
+  &__socials {
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+  }
+
+  &__socials a {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 9px 12px;
+
+    border: 1px solid $border-color;
+    border-radius: 5px;
+
+    color: $muted-color;
+
+    font-size: 0.72rem;
+    font-weight: 600;
 
     text-decoration: none;
 
     transition:
       color 0.2s ease,
-      border-color 0.2s ease;
+      border-color 0.2s ease,
+      background-color 0.2s ease,
+      transform 0.2s ease;
+
+    svg {
+      width: 14px;
+      height: 14px;
+
+      flex-shrink: 0;
+    }
 
     &:hover {
-      color: $primary-color;
+      color: $text-color;
 
-      border-color: $primary-color;
+      border-color: rgba(139, 92, 246, 0.45);
+
+      background: rgba(124, 58, 237, 0.07);
+
+      transform: translateY(-2px);
+
+      .contact__social-arrow {
+        color: $primary-light;
+
+        transform: translate(2px, -2px);
+      }
     }
   }
 
-  &__arrow {
-    flex-shrink: 0;
+  &__social-arrow {
+    color: #64748b;
 
-    font-size: 1.3rem;
-  }
+    font-size: 0.75rem;
 
-  // ==============================
-  // Socials
-  // ==============================
-
-  &__socials {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-
-    margin-top: 25px;
-
-    a {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-
-      padding: 9px 13px;
-
-      border: 1px solid $border-color;
-      border-radius: 6px;
-
-      color: $muted-color;
-
-      font-size: 0.8rem;
-      font-weight: 600;
-
-      text-decoration: none;
-
-      transition:
-        color 0.2s ease,
-        border-color 0.2s ease,
-        background-color 0.2s ease,
-        transform 0.2s ease;
-
-      i {
-        font-size: 0.95rem;
-      }
-
-      &:hover {
-        color: $primary-color;
-
-        border-color: $primary-color;
-
-        transform: translateY(-2px);
-      }
-    }
+    transition:
+      color 0.2s ease,
+      transform 0.2s ease;
   }
 }
 
-// ==============================
+// ========================================
 // Tablet
-// ==============================
+// ========================================
 
 @media (max-width: 900px) {
   .contact {
-    padding: 90px 0;
+    padding: 100px 0 80px;
 
     &__wrapper {
-      padding: 55px 0;
+      padding: 65px 0 55px;
+    }
+
+    &__title {
+      font-size: clamp(3rem, 8vw, 5rem);
+    }
+
+    &__actions {
+      margin-top: 55px;
     }
   }
 }
 
-// ==============================
+// ========================================
 // Mobile
-// ==============================
+// ========================================
 
 @media (max-width: 600px) {
   .contact {
-    padding: 70px 0;
+    padding: 80px 0 60px;
 
     &__wrapper {
-      padding: 45px 0;
+      padding: 50px 0 45px;
+    }
+
+    &__wrapper::before {
+      width: 55px;
     }
 
     &__eyebrow {
-      margin-bottom: 14px;
+      margin-bottom: 18px;
 
-      font-size: 0.75rem;
+      font-size: 0.64rem;
     }
 
     &__title {
-      font-size: 3rem;
+      font-size: clamp(2.7rem, 13vw, 4rem);
+
       line-height: 1;
     }
 
     &__description {
-      margin-top: 20px;
+      margin-top: 22px;
 
       font-size: 0.9rem;
-      line-height: 1.7;
+
+      line-height: 1.75;
     }
 
     &__actions {
-      margin-top: 40px;
+      margin-top: 45px;
     }
 
     &__email {
-      gap: 15px;
+      grid-template-columns: 1fr auto;
 
-      font-size: 0.95rem;
+      gap: 10px;
 
-      word-break: break-word;
+      padding: 17px 0;
+
+      .contact__email-label {
+        grid-column: 1 / -1;
+      }
+    }
+
+    &__email-address {
+      font-size: 0.86rem;
+    }
+
+    &__arrow {
+      width: 36px;
+      height: 36px;
+
+      font-size: 0.9rem;
+    }
+
+    &__footer {
+      align-items: flex-start;
+
+      flex-direction: column;
+
+      gap: 16px;
+
+      margin-top: 25px;
     }
 
     &__socials {
       flex-wrap: wrap;
 
-      gap: 10px;
+      width: 100%;
+    }
 
-      margin-top: 20px;
+    &__socials a {
+      flex: 1;
 
-      a {
-        padding: 8px 11px;
+      justify-content: center;
 
-        font-size: 0.75rem;
-      }
+      min-width: 90px;
+
+      padding: 9px 10px;
     }
   }
 }

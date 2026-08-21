@@ -7,22 +7,41 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import "./_contact.scss";
 
+const socials = [
+  {
+    name: "LinkedIn",
+    icon: faLinkedinIn,
+    href: "https://linkedin.com/in/ahmed-abd-el-ghany",
+  },
+  {
+    name: "GitHub",
+    icon: faGithub,
+    href: "https://github.com/ahmed-abdelghany",
+  },
+  {
+    name: "WhatsApp",
+    icon: faWhatsapp,
+    href: "https://wa.me/971544615067",
+  },
+];
+
 function Contact() {
   return (
     <section className="contact" id="contact">
       <div className="container">
         <div className="contact__wrapper">
           <div className="contact__header">
-            <span className="contact__eyebrow">Get In Touch</span>
+            <span className="contact__eyebrow">Let's Connect</span>
 
             <h2 className="contact__title">
-              Let's build something
-              <span> meaningful.</span>
+              Have an idea?
+              <span> Let's build it.</span>
             </h2>
 
             <p className="contact__description">
-              Have a project in mind, an opportunity to discuss, or simply want
-              to connect? Feel free to reach out.
+              I'm open to frontend opportunities, freelance projects, and
+              collaborations where I can build useful, scalable, and
+              well-crafted web experiences.
             </p>
           </div>
 
@@ -31,40 +50,39 @@ function Contact() {
               className="contact__email"
               href="mailto:ahmed.abdelghany1211@gmail.com"
             >
-              <span>ahmed.abdelghany1211@gmail.com</span>
-              <span className="contact__arrow">↗</span>
+              <span className="contact__email-label">Get in touch</span>
+
+              <span className="contact__email-address">
+                ahmed.abdelghany1211@gmail.com
+              </span>
+
+              <span className="contact__arrow" aria-hidden="true">
+                ↗
+              </span>
             </a>
 
-            <div className="contact__socials">
-              <a
-                href="https://wa.me/971544615067"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Contact me on WhatsApp"
-              >
-                <FontAwesomeIcon icon={faWhatsapp} />
-                <span>WhatsApp</span>
-              </a>
+            <div className="contact__footer">
+              <span className="contact__footer-label">Find me online</span>
 
-              <a
-                href="https://github.com/ahmed-abdelghany"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Visit my GitHub"
-              >
-                <FontAwesomeIcon icon={faGithub} />
-                <span>GitHub</span>
-              </a>
+              <div className="contact__socials">
+                {socials.map((social) => (
+                  <a
+                    key={social.name}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`Visit my ${social.name}`}
+                  >
+                    <FontAwesomeIcon icon={social.icon} aria-hidden="true" />
 
-              <a
-                href="https://linkedin.com/in/ahmed-abd-el-ghany"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Visit my LinkedIn"
-              >
-                <FontAwesomeIcon icon={faLinkedinIn} />
-                <span>LinkedIn</span>
-              </a>
+                    <span>{social.name}</span>
+
+                    <span className="contact__social-arrow" aria-hidden="true">
+                      ↗
+                    </span>
+                  </a>
+                ))}
+              </div>
             </div>
           </div>
         </div>
