@@ -1,10 +1,12 @@
+@use "../../assets/styles/config" as *;
+
 .developer-workspace {
   position: absolute;
 
   top: 0;
   right: 0;
 
-  width: 57%;
+  width: 55%;
   height: 100%;
 
   z-index: 2;
@@ -14,16 +16,16 @@
   -webkit-mask-image: linear-gradient(
     to right,
     transparent 0%,
-    rgba(0, 0, 0, 0.4) 18%,
-    black 40%,
+    rgba(0, 0, 0, 0.12) 14%,
+    black 38%,
     black 100%
   );
 
   mask-image: linear-gradient(
     to right,
     transparent 0%,
-    rgba(0, 0, 0, 0.4) 18%,
-    black 40%,
+    rgba(0, 0, 0, 0.12) 14%,
+    black 38%,
     black 100%
   );
 
@@ -75,7 +77,6 @@
 
 .workspace-editor__dots {
   display: flex;
-
   gap: 6px;
 
   margin-right: 15px;
@@ -124,18 +125,17 @@
 
     font-size: 10px;
     line-height: 1.65;
+
     white-space: nowrap;
   }
 
   i {
     color: #c084fc;
-
     font-style: normal;
   }
 
   b {
     color: #8b5cf6;
-
     font-weight: 500;
   }
 }
@@ -201,14 +201,12 @@
 
 .workspace-card__list {
   display: flex;
-
   flex-direction: column;
 
   gap: 6px;
 
   span {
     color: #94a3b8;
-
     font-size: 9px;
   }
 }
@@ -347,7 +345,6 @@
   color: #f8fafc;
 
   font-size: 17px;
-
   font-weight: 700;
 
   line-height: 1.05;
@@ -388,12 +385,12 @@
 }
 
 // ========================================
-// Tablet
+// Responsive Workspace
 // ========================================
 
 @media (max-width: 1000px) {
   .developer-workspace {
-    width: 62%;
+    width: 60%;
 
     opacity: 0.65;
   }
@@ -401,11 +398,23 @@
   .workspace-editor {
     width: 380px;
   }
-}
 
-// ========================================
-// Mobile
-// ========================================
+  .workspace-card {
+    width: 160px;
+  }
+
+  .workspace-capability {
+    width: 140px;
+  }
+
+  .workspace-capability--state {
+    width: 155px;
+  }
+
+  .workspace-browser {
+    width: 185px;
+  }
+}
 
 @media (max-width: 767px) {
   .developer-workspace {

@@ -1,13 +1,13 @@
 import {
-    SiGit,
-    SiGithub,
-    SiJavascript,
-    SiReact,
-    SiRedux,
-    SiSass,
-    SiTailwindcss,
-    SiTypescript,
-    SiVite,
+  SiGit,
+  SiGithub,
+  SiJavascript,
+  SiReact,
+  SiRedux,
+  SiSass,
+  SiTailwindcss,
+  SiTypescript,
+  SiVite,
 } from "react-icons/si";
 
 import "./_technology-strip.scss";

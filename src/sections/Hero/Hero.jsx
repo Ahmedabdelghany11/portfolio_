@@ -24,14 +24,13 @@ function Hero() {
             </h1>
 
             <h2 className="hero__role">
-              I build fast, scalable &amp; polished web interfaces.
+              I build fast, scalable & polished web interfaces.
             </h2>
 
             <p className="hero__description">
               Frontend Engineer focused on building modern React applications
-              with clean architecture, reusable components, responsive
-              interfaces, API integration, and a strong attention to performance
-              and user experience.
+              with reusable components, responsive interfaces, API integration,
+              and a strong focus on performance and user experience.
             </p>
 
             <div className="hero__actions">
@@ -44,14 +43,6 @@ function Hero() {
                 Let's Connect
                 <span>↗</span>
               </Button>
-            </div>
-
-            <div className="hero__stack">
-              <span>React</span>
-              <span>TypeScript</span>
-              <span>JavaScript</span>
-              <span>Redux</span>
-              <span>React Query</span>
             </div>
           </div>
         </div>

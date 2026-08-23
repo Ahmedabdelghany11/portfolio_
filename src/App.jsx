@@ -1,6 +1,7 @@
 import Footer from "./components/Footer/Footer";
 import Navbar from "./components/Navbar/Navbar";
 import TechnologyStrip from "./components/TechnologyStrip/TechnologyStrip";
+
 import About from "./sections/About/About";
 import Contact from "./sections/Contact/Contact";
 import Experience from "./sections/Experience/Experience";
@@ -16,13 +17,15 @@ function App() {
       <main>
         <Hero />
         <TechnologyStrip />
+
         <About />
         <Skills />
         <Projects />
         <Experience />
         <Contact />
-        <Footer />
       </main>
+
+      <Footer />
     </>
   );
 }
