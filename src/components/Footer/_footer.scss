@@ -1,109 +1,89 @@
 @use "../../assets/styles/config" as *;
 
 .footer {
-  position: relative;
-
-  padding: 32px 0 28px;
+  padding: 32px 0 24px;
 
   border-top: 1px solid $border-color;
 
-  background: $background-color;
+  background: #060a15;
 
   // ========================================
-  // Main
+  // Top
   // ========================================
 
-  &__main {
+  &__top {
     display: grid;
 
     grid-template-columns: 1fr auto 1fr;
 
     align-items: center;
 
-    gap: 30px;
+    gap: 25px;
 
-    min-height: 55px;
+    padding-bottom: 26px;
+
+    border-bottom: 1px solid rgba(148, 163, 184, 0.07);
   }
 
   // ========================================
-  // Logo
+  // Brand
   // ========================================
 
-  &__logo {
-    width: fit-content;
+  &__brand {
+    width: 36px;
+    height: 36px;
 
-    color: $text-color;
-
-    font-size: 1.05rem;
-    font-weight: 700;
-
-    letter-spacing: -0.02em;
-
-    text-decoration: none;
-
-    transition: color 0.2s ease;
-
-    span {
-      color: $primary-light;
-    }
-
-    &:hover {
-      color: $primary-light;
-    }
-  }
-
-  // ========================================
-  // Navigation
-  // ========================================
-
-  &__nav {
-    display: flex;
+    display: inline-flex;
 
     align-items: center;
     justify-content: center;
 
-    gap: 26px;
+    border: 1px solid rgba(139, 92, 246, 0.28);
 
-    a {
-      position: relative;
+    border-radius: 8px;
 
-      color: $muted-color;
+    background: rgba(124, 58, 237, 0.06);
 
-      font-size: 0.72rem;
-      font-weight: 500;
+    color: #f8fafc;
 
-      text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 800;
 
-      transition: color 0.2s ease;
+    text-decoration: none;
 
-      &::after {
-        content: "";
+    transition:
+      color 0.2s ease,
+      border-color 0.2s ease,
+      background-color 0.2s ease,
+      transform 0.2s ease;
 
-        position: absolute;
+    &:hover {
+      color: $primary-light;
 
-        left: 0;
-        bottom: -6px;
+      border-color: rgba(139, 92, 246, 0.5);
 
-        width: 0;
-        height: 1px;
+      background: rgba(124, 58, 237, 0.1);
 
-        background: $primary-color;
-
-        transition: width 0.25s ease;
-      }
-
-      &:hover {
-        color: $text-color;
-
-        &::after {
-          width: 100%;
-        }
-      }
+      transform: translateY(-2px);
     }
   }
 
   // ========================================
-  // Back To Top
+  // Message
+  // ========================================
+
+  &__message {
+    margin: 0;
+
+    color: #64748b;
+
+    font-size: 0.68rem;
+
+    text-align: center;
+  }
+
+  // ========================================
+  // Back to Top
   // ========================================
 
   &__back {
@@ -113,50 +93,31 @@
 
     align-items: center;
 
-    gap: 9px;
+    gap: 8px;
 
-    color: $muted-color;
+    color: #94a3b8;
 
-    font-size: 0.72rem;
+    font-size: 0.68rem;
+
     font-weight: 500;
 
     text-decoration: none;
 
-    transition: color 0.2s ease;
-
-    &:hover {
-      color: $text-color;
-
-      .footer__back-icon {
-        border-color: $primary-color;
-
-        color: $primary-light;
-
-        transform: translateY(-2px);
-      }
-    }
-  }
-
-  &__back-icon {
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    width: 30px;
-    height: 30px;
-
-    border: 1px solid $border-color;
-    border-radius: 50%;
-
-    color: $muted-color;
-
-    font-size: 0.9rem;
-
     transition:
       color 0.2s ease,
-      border-color 0.2s ease,
       transform 0.2s ease;
+
+    span {
+      color: $primary-light;
+
+      font-size: 0.9rem;
+    }
+
+    &:hover {
+      color: #f8fafc;
+
+      transform: translateY(-2px);
+    }
   }
 
   // ========================================
@@ -164,98 +125,18 @@
   // ========================================
 
   &__bottom {
-    display: grid;
-
-    grid-template-columns: 1fr auto 1fr;
-
-    align-items: center;
-
-    gap: 25px;
-
-    margin-top: 28px;
-
-    padding-top: 20px;
-
-    border-top: 1px solid $border-color;
-
-    p {
-      margin: 0;
-
-      color: #64748b;
-
-      font-size: 0.68rem;
-      line-height: 1.5;
-    }
-  }
-
-  // ========================================
-  // Socials
-  // ========================================
-
-  &__socials {
     display: flex;
 
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
 
     gap: 20px;
 
-    a {
-      color: $muted-color;
+    padding-top: 19px;
 
-      font-size: 0.68rem;
-      font-weight: 500;
+    color: #475569;
 
-      text-decoration: none;
-
-      transition: color 0.2s ease;
-
-      &:hover {
-        color: $primary-light;
-      }
-    }
-  }
-
-  // ========================================
-  // Built With
-  // ========================================
-
-  &__built {
-    justify-self: end;
-
-    color: #64748b;
-
-    font-size: 0.66rem;
-    font-weight: 500;
-
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-  }
-}
-
-// ========================================
-// Tablet
-// ========================================
-
-@media (max-width: 900px) {
-  .footer {
-    &__main {
-      grid-template-columns: auto 1fr auto;
-
-      gap: 20px;
-    }
-
-    &__nav {
-      gap: 18px;
-    }
-
-    &__bottom {
-      grid-template-columns: 1fr auto;
-    }
-
-    &__built {
-      display: none;
-    }
+    font-size: 0.62rem;
   }
 }
 
@@ -263,75 +144,33 @@
 // Mobile
 // ========================================
 
-@media (max-width: 600px) {
+@media (max-width: 767px) {
   .footer {
-    padding: 28px 0 22px;
+    padding: 26px 0 20px;
 
-    &__main {
-      display: flex;
-
-      flex-direction: column;
-
-      align-items: center;
-
-      gap: 22px;
-
-      min-height: auto;
-    }
-
-    &__logo {
-      font-size: 1rem;
-    }
-
-    &__nav {
-      flex-wrap: wrap;
-
-      gap: 10px 18px;
-    }
-
-    &__nav a {
-      font-size: 0.7rem;
-    }
-
-    &__back {
-      justify-self: auto;
-
-      gap: 8px;
-
-      font-size: 0.7rem;
-    }
-
-    &__back-icon {
-      width: 28px;
-      height: 28px;
-    }
-
-    &__bottom {
-      display: flex;
-
-      flex-direction: column;
-
-      gap: 15px;
-
-      margin-top: 25px;
-
-      padding-top: 18px;
-
-      text-align: center;
-    }
-
-    &__socials {
-      order: -1;
+    &__top {
+      grid-template-columns: 1fr auto;
 
       gap: 18px;
     }
 
-    &__socials a {
-      font-size: 0.68rem;
+    &__brand {
+      width: 34px;
+      height: 34px;
     }
 
-    &__built {
+    &__message {
       display: none;
+    }
+
+    &__bottom {
+      flex-direction: column;
+
+      align-items: flex-start;
+
+      gap: 7px;
+
+      font-size: 0.6rem;
     }
   }
 }

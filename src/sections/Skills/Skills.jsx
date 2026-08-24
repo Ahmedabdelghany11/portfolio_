@@ -26,10 +26,11 @@ const skillGroups = [
   {
     number: "01",
     title: "Frontend",
+    description: "Core technologies I use to build interfaces.",
     skills: [
-      { name: "React.js", icon: SiReact },
+      { name: "React.js", icon: SiReact, featured: true },
+      { name: "TypeScript", icon: SiTypescript, featured: true },
       { name: "JavaScript", icon: SiJavascript },
-      { name: "TypeScript", icon: SiTypescript },
       { name: "HTML5", icon: SiHtml5 },
       { name: "CSS3", icon: TbCode },
     ],
@@ -37,18 +38,31 @@ const skillGroups = [
   {
     number: "02",
     title: "State & Data",
+    description: "Managing application state and server data.",
     skills: [
-      { name: "Redux Toolkit", icon: SiRedux },
-      { name: "React Query", icon: SiReact },
-      { name: "REST APIs", icon: TbApi },
+      {
+        name: "Redux Toolkit",
+        icon: SiRedux,
+        featured: true,
+      },
+      {
+        name: "React Query",
+        icon: SiReact,
+        featured: true,
+      },
+      {
+        name: "REST APIs",
+        icon: TbApi,
+      },
     ],
   },
   {
     number: "03",
     title: "Styling & UI",
+    description: "Tools for responsive and consistent interfaces.",
     skills: [
-      { name: "Tailwind CSS", icon: SiTailwindcss },
       { name: "SASS", icon: SiSass },
+      { name: "Tailwind CSS", icon: SiTailwindcss },
       { name: "Styled Components", icon: TbComponents },
       { name: "Responsive Design", icon: TbGauge },
     ],
@@ -56,6 +70,7 @@ const skillGroups = [
   {
     number: "04",
     title: "Development",
+    description: "Practices that shape how I build applications.",
     skills: [
       { name: "Authentication", icon: TbShieldLock },
       { name: "Reusable Components", icon: TbComponents },
@@ -65,6 +80,7 @@ const skillGroups = [
   {
     number: "05",
     title: "Tools & Build",
+    description: "Tools I use throughout the development workflow.",
     skills: [
       { name: "Git", icon: SiGit },
       { name: "GitHub", icon: SiGithub },
@@ -81,36 +97,44 @@ function Skills() {
         <div className="skills__header">
           <span className="skills__eyebrow">What I Work With</span>
 
-          <h2 className="skills__title">
-            The tools behind my
-            <span> work.</span>
-          </h2>
+          <div className="skills__heading">
+            <h2 className="skills__title">Skills & Technologies</h2>
 
-          <p className="skills__intro">
-            A practical stack I use to build scalable, responsive, and
-            maintainable frontend applications.
-          </p>
+            <p className="skills__intro">
+              A practical stack built around React, modern frontend development,
+              and production web applications.
+            </p>
+          </div>
         </div>
 
         <div className="skills__list">
           {skillGroups.map((group) => (
-            <div className="skills__group" key={group.number}>
-              <div className="skills__group-meta">
+            <article className="skills__group" key={group.number}>
+              <div className="skills__meta">
                 <span className="skills__number">{group.number}</span>
 
-                <h3 className="skills__group-title">{group.title}</h3>
+                <div>
+                  <h3 className="skills__group-title">{group.title}</h3>
+
+                  <p className="skills__group-description">
+                    {group.description}
+                  </p>
+                </div>
               </div>
 
               <div className="skills__items">
-                {group.skills.map(({ name, icon: Icon }) => (
-                  <div className="skills__item" key={name}>
+                {group.skills.map(({ name, icon: Icon, featured }) => (
+                  <div
+                    className={`skills__item ${featured ? "is-featured" : ""}`}
+                    key={name}
+                  >
                     <Icon className="skills__icon" aria-hidden="true" />
 
                     <span>{name}</span>
                   </div>
                 ))}
               </div>
-            </div>
+            </article>
           ))}
         </div>
       </div>

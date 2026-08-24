@@ -52,7 +52,11 @@
 
     overflow: visible;
 
-    padding: 35px 0 40px;
+    /*
+      Keep enough vertical breathing room for the
+      active card shadow and the controls below.
+    */
+    padding: 35px 0 42px;
   }
 
   // ==================================================
@@ -69,18 +73,18 @@
     align-items: stretch;
     justify-content: center;
 
+    transform: scale(0.82);
+
+    opacity: 0.26;
+
+    filter: brightness(0.52);
+
+    z-index: 1;
+
     transition:
       transform 0.65s cubic-bezier(0.22, 1, 0.36, 1),
       opacity 0.65s ease,
       filter 0.65s ease;
-
-    transform: scale(0.82);
-
-    opacity: 0.28;
-
-    filter: brightness(0.55);
-
-    z-index: 1;
 
     // ----------------------------------------------
     // Active
@@ -110,12 +114,11 @@
     }
 
     // ----------------------------------------------
-    // Make the card fill its slide
+    // Card fills slide
     // ----------------------------------------------
 
     .project-card {
       width: 100%;
-
       height: 100%;
     }
   }
@@ -145,7 +148,7 @@
   }
 
   // ==================================================
-  // Navigation Buttons
+  // Navigation
   // ==================================================
 
   &__nav {
@@ -163,9 +166,9 @@
 
     border-radius: 50%;
 
-    color: $text-color;
+    color: #94a3b8;
 
-    background: rgba(15, 23, 42, 0.55);
+    background: rgba(15, 23, 42, 0.62);
 
     font-family: inherit;
 
@@ -186,7 +189,7 @@
 
       border-color: rgba(139, 92, 246, 0.55);
 
-      background: rgba(124, 58, 237, 0.16);
+      background: rgba(124, 58, 237, 0.14);
 
       transform: translateY(-1px);
     }
@@ -201,9 +204,14 @@
       outline-offset: 4px;
     }
 
-    // Swiper disabled state
     &.swiper-button-disabled {
-      opacity: 0.35;
+      color: #475569;
+
+      border-color: rgba(148, 163, 184, 0.1);
+
+      background: rgba(15, 23, 42, 0.32);
+
+      opacity: 0.65;
 
       pointer-events: none;
     }
@@ -235,28 +243,49 @@
 
     gap: 7px;
 
+    /*
+      Important:
+      Swiper's default bullet styles are overridden here
+      so the inactive bullets remain visible on dark UI.
+    */
+
     .swiper-pagination-bullet {
-      width: 4px;
-      height: 4px;
+      width: 5px;
+      height: 5px;
 
       margin: 0 !important;
 
+      border: 0;
+
       border-radius: 999px;
 
-      background: rgba(148, 163, 184, 0.4);
+      background: #64748b;
 
-      opacity: 1;
+      opacity: 0.72;
+
+      box-shadow: none;
 
       transition:
         width 0.3s ease,
         background-color 0.3s ease,
-        opacity 0.3s ease;
+        opacity 0.3s ease,
+        box-shadow 0.3s ease;
+    }
+
+    .swiper-pagination-bullet:hover {
+      background: #94a3b8;
+
+      opacity: 1;
     }
 
     .swiper-pagination-bullet-active {
-      width: 18px;
+      width: 20px;
 
-      background: $primary-light;
+      background: $primary-color;
+
+      opacity: 1;
+
+      box-shadow: 0 0 12px rgba(124, 58, 237, 0.45);
     }
   }
 }
@@ -269,8 +298,7 @@
   .projects {
     &__swiper {
       padding-top: 30px;
-
-      padding-bottom: 35px;
+      padding-bottom: 38px;
     }
 
     &__slide {
@@ -314,8 +342,7 @@
 
     &__swiper {
       padding-top: 25px;
-
-      padding-bottom: 30px;
+      padding-bottom: 32px;
     }
 
     &__slide {
@@ -360,17 +387,17 @@
     &__slide {
       transform: scale(0.9);
 
-      opacity: 0.32;
+      opacity: 0.3;
 
-      filter: brightness(0.58);
+      filter: brightness(0.56);
 
       &.swiper-slide-prev,
       &.swiper-slide-next {
         transform: scale(0.9);
 
-        opacity: 0.32;
+        opacity: 0.3;
 
-        filter: brightness(0.58);
+        filter: brightness(0.56);
       }
 
       &.swiper-slide-active {
@@ -405,10 +432,18 @@
       .swiper-pagination-bullet {
         width: 4px;
         height: 4px;
+
+        background: #64748b;
+
+        opacity: 0.75;
       }
 
       .swiper-pagination-bullet-active {
-        width: 16px;
+        width: 17px;
+
+        background: $primary-color;
+
+        opacity: 1;
       }
     }
   }
@@ -422,7 +457,6 @@
   .projects {
     &__swiper {
       padding-top: 12px;
-
       padding-bottom: 24px;
     }
 
@@ -448,6 +482,23 @@
     &__nav {
       width: 36px;
       height: 36px;
+    }
+  }
+}
+
+// ======================================================
+// Reduced Motion
+// ======================================================
+
+@media (prefers-reduced-motion: reduce) {
+  .projects {
+    &__slide {
+      transition: none;
+    }
+
+    &__nav,
+    &__pagination .swiper-pagination-bullet {
+      transition: none;
     }
   }
 }
