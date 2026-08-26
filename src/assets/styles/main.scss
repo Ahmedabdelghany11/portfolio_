@@ -1,30 +1,17 @@
 @use "./reset";
 
-// ========================================
-// Components
-// ========================================
-
 @use "../../components/Navbar/navbar";
 @use "../../components/Button/button";
+@use "../../components/Preloader/preloader";
 @use "../../components/DeveloperWorkspace/developer-workspace";
 @use "../../components/TechnologyStrip/technology-strip";
 @use "../../components/ProjectCard/project-card";
-@use "../../components/Footer/footer";
-
-// ========================================
-// Shared
-// ========================================
-
 @use "../../components/SectionTitle/section-title";
-
-// ========================================
-// Sections
-// ========================================
+@use "../../components/Footer/footer";
 
 @use "../../sections/Hero/hero";
 @use "../../sections/About/about";
 @use "../../sections/Skills/skills";
 @use "../../sections/Experience/experience";
-@use "../../sections/Education/education";
 @use "../../sections/Projects/projects";
 @use "../../sections/Contact/contact";

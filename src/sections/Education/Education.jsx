@@ -20,12 +20,7 @@ function Education() {
 
             <div className="education__details">
               <span>Minufiyah University</span>
-              <span>Sep 2018 — July 2022</span>
-            </div>
-
-            <div className="education__result">
-              <span>Very Good</span>
-              <span>86%</span>
+              <span>2018 — 2022</span>
             </div>
           </div>
         </div>
